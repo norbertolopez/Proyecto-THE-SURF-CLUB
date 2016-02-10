@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-01-2016 a las 12:24:25
+-- Tiempo de generación: 10-02-2016 a las 18:50:23
 -- Versión del servidor: 10.0.17-MariaDB
 -- Versión de PHP: 5.6.14
 
@@ -41,10 +41,11 @@ CREATE TABLE `alquiler` (
 --
 
 INSERT INTO `alquiler` (`id_alquiler`, `id_cliente`, `id_material`, `duracion_alquiler`, `costo_alquiler`, `fecha_inicio_alquiler`, `fecha_fin_alquiler`) VALUES
-(1, 6, 1, 127, 200.00, '2014-07-01', '2014-07-09'),
-(2, 7, 6, 50, 100.00, '2014-09-02', '2014-09-13'),
-(3, 9, 2, 10, 50.00, '2014-07-22', '2014-07-30'),
-(4, 6, 6, 127, 500.00, '2014-09-01', '2014-09-06');
+(1, 6, 1, 127, 200.00, '2011-03-20', '2011-05-20'),
+(2, 7, 6, 50, 100.00, '2011-10-20', '2011-12-20'),
+(3, 9, 2, 10, 50.00, '2011-10-20', '2011-11-20'),
+(4, 6, 6, 127, 500.00, '2010-10-20', '2014-02-20'),
+(5, 10, 5, 20, 40.00, '2011-06-05', '2011-09-10');
 
 -- --------------------------------------------------------
 
@@ -65,7 +66,11 @@ INSERT INTO `clientecursos` (`id_curso`, `id_cliente`) VALUES
 (1, 6),
 (1, 7),
 (1, 8),
-(38, 9);
+(1, 10),
+(1, 11),
+(2, 12),
+(3, 13),
+(4, 9);
 
 -- --------------------------------------------------------
 
@@ -88,7 +93,11 @@ INSERT INTO `clientes` (`id_cliente`, `dni_cliente`, `nombre_cliente`, `apellido
 (6, '12345678l', 'Alfonso', 'Suarez Casado'),
 (7, '12345678k', 'Juan', 'Salado Perez'),
 (8, '87654321q', 'Adrian', 'Rey Salado'),
-(9, '87654321b', 'Rafael', 'Fernandez Asencio');
+(9, '87654321b', 'Rafael', 'Fernandez Asencio'),
+(10, '53354486a', 'juan diego', 'perez'),
+(11, '53354466a', 'Alberto', 'LÃ³pez'),
+(12, '59685967u', 'Jose', 'Pruebas'),
+(13, '12345678j', 'Rafael', 'Fernandez');
 
 -- --------------------------------------------------------
 
@@ -113,7 +122,9 @@ INSERT INTO `contrato` (`id_contrato`, `id_monitor`, `duracion_contrato`, `costo
 (2, 1, 600, 1500.00, '2009-08-10', '2014-08-10'),
 (3, 2, 700, 6000.00, '2010-10-20', '2012-10-20'),
 (4, 2, 200, 1000.00, '2007-03-20', '2010-03-20'),
-(5, 6, 100, 2000.00, '2010-02-10', '2011-02-10');
+(5, 6, 100, 2000.00, '2010-02-10', '2011-02-10'),
+(7, 5, 500, 300.00, '2011-01-01', '2014-01-01'),
+(8, 3, 200, 600.00, '2012-09-08', '2015-09-08');
 
 -- --------------------------------------------------------
 
@@ -138,36 +149,36 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id_curso`, `id_monitor`, `id_playa`, `nombre_curso`, `deporte`, `duracion_cursos`, `fecha_inicio_cursos`, `fecha_fin_curso`, `costo_curso`) VALUES
-(1, 1, 1, 'surf_principiante', 'surfing', 255, '2014-06-12', '2014-08-06', 300.00),
-(2, 2, 3, 'surf_intermedio', 'surfing', 100, '2014-04-01', '2014-04-07', 100.00),
-(37, 3, 4, 'surf_avanzado', 'surfing', 100, '2014-08-03', '2014-08-11', 50.00),
-(38, 4, 2, 'longboard_intermedio', 'longboard', 255, '2014-08-09', '2014-08-13', 500.00),
-(39, 5, 5, 'longboard_avanzado', 'longboard', 200, '2014-06-05', '2014-06-17', 987.00),
-(40, 6, 1, 'surf_nivel_competicion', 'surfing', 255, '2014-10-01', '2014-10-31', 600.00),
-(41, 6, 1, 'bodyboard_intermedio', 'bodyboard', 30, '2014-04-01', '2014-04-16', 50.00),
-(42, 1, 1, 'bodyboard_avanzado', 'bodyboard', 255, '2014-07-01', '2014-07-09', 600.00),
-(43, 1, 1, 'entrenamiento_personal', 'entrenamiento_personal', 120, '2014-07-01', '2014-09-30', 100.00);
+(1, 1, 1, 'surf_principiante', 'surfing', 255, '2011-12-20', '2012-12-20', 300.00),
+(2, 2, 3, 'surf_intermedio', 'surfing', 100, '2011-08-10', '2012-08-10', 100.00),
+(3, 3, 4, 'surf_avanzado', 'surfing', 100, '2011-06-20', '2011-09-20', 50.00),
+(4, 4, 2, 'longboard_principiante', 'longboard', 255, '2011-09-15', '2011-06-16', 500.00),
+(5, 5, 5, 'longboard_avanzado', 'longboard', 200, '2012-12-25', '2013-10-30', 987.00),
+(6, 6, 1, 'surf_competicion', 'surfing', 255, '2001-10-12', '2013-10-12', 600.00),
+(7, 6, 1, 'bodyboard_intermedio', 'bodyboard', 30, '2011-10-12', '2011-11-12', 50.00),
+(8, 1, 1, 'bodyboard_avanzado', 'bodyboard', 255, '2011-10-12', '2013-10-12', 600.00),
+(9, 1, 1, 'entrenamiento_personal', 'preparacionfisica', 120, '2010-08-10', '2010-09-10', 100.00);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `eventos`
+-- Estructura de tabla para la tabla `event`
 --
 
-CREATE TABLE `eventos` (
+CREATE TABLE `event` (
   `id` int(4) NOT NULL,
   `body` text NOT NULL,
   `timestamp` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `eventos`
+-- Volcado de datos para la tabla `event`
 --
 
-INSERT INTO `eventos` (`id`, `body`, `timestamp`) VALUES
-(15, 'Campeonato principiantes-todas las categorias', '1301522400'),
-(21, 'Campeonato intermedios', '1301094000'),
-(22, 'Campeonatos avanzados', '1301180400');
+INSERT INTO `event` (`id`, `body`, `timestamp`) VALUES
+(15, 'Clases', '1301522400'),
+(21, 'hola', '1301094000'),
+(22, 'kulunguele', '1301180400');
 
 -- --------------------------------------------------------
 
@@ -187,12 +198,18 @@ CREATE TABLE `material` (
 --
 
 INSERT INTO `material` (`id_material`, `nombre_material`, `tipo_material`, `modelo_material`) VALUES
-(1, 'performance d2', 'surfboard', 'soulsurfboards'),
-(2, 'Cabianca', 'surfboard', 'pukas'),
-(3, 'ultrahigh', 'longboard', 'dhd'),
-(4, 'assault v1', 'bodyboard', 'VZ'),
+(1, 'performance', 'surfboard', 'soulsurfboar'),
+(2, 'cabianca', 'surfboard', 'pukas'),
+(3, 'ultraH', 'longboard', 'dhd'),
+(4, 'assault', 'bodyboard', 'VZ'),
 (5, 'ned kelly', 'longboard', 'all merick'),
-(6, 'm inside', 'bodyboard', 'RS');
+(6, 'Mindise', 'bodyboard', 'Rs'),
+(7, 'prueba', 'prueba', 'prueba'),
+(8, 'prueba1', 'prueba1', 'prueba1'),
+(9, 'prueba2', 'prueba2', 'prueba2'),
+(10, 'prueba3', 'prueba3', 'prueba3'),
+(11, 'tabla', 'prueba', 'yasuniboard'),
+(12, 'sup', 'padelboard', 'revenge');
 
 -- --------------------------------------------------------
 
@@ -217,12 +234,13 @@ CREATE TABLE `monitores` (
 --
 
 INSERT INTO `monitores` (`id_monitor`, `dni_monitor`, `nombre_monitor`, `apellidos_monitor`, `email_monitor`, `direccion_monitor`, `telefono_monitor`, `actividad_monitor`, `foto_monitor`) VALUES
-(1, '12345678p', 'Norberto', 'López', 'ndelarosa@gmail.com', 'C/ junco', '987654321', 'surfing', 'carnet1.jpg'),
-(2, '12345678o', 'Juan Diego', 'Perez', 'jdperez@gmail.com', 'C/ Luna', '987654321', 'longboard', 'carnet2.jpg'),
-(3, '12345678i', 'Juanjo', 'Fernandez', 'jfernandez@gmail.com', 'C/ Niebla', '987654321', 'surfing', 'carnet4.jpg'),
-(4, '12345678u', 'Alberto', 'Fernandez', 'alberto_f@gmail.com', 'C/ Solana', '987654321', 'longboard', 'carnet5.jpg'),
-(5, '12345678y', 'Carlos', 'Estevez', 'estevez_carlos@hotmail.com', 'C/Salado', '987654321', 'bodyboard', 'carnet7.jpg'),
-(6, '12345678t', 'Ana', 'Perez', 'anapr@gmail.com', 'C/ mar salada', '987654321', 'entrenamiento personal', 'foto9.jpg');
+(1, '12345678p', 'Alana', 'Blanchard', 'blanchard@gmail.com', 'C/ Sola', '987654321', 'Surfing', 'carnet1.jpg'),
+(2, '12345678o', 'Julian ', 'Wilson', 'julianw@gmail.com', 'C/ snapper', '987654321', 'Surf Competicion', 'carnet2.jpg'),
+(3, '12345678i', 'Benito', 'Stewar', 'Benskii@gmail.com', 'C/ Niebla', '987654321', 'Longboard', '1455045496-1455045477-carnet4.jpg'),
+(4, '12345678u', 'Guillermo', 'Cobo', 'guicbo@gmail.com', 'C/ Solana', '987654321', 'Bodyboard', 'carnet5.jpg'),
+(5, '12345678y', 'Taylor', 'Knox', 'Knox_tay@hotmail.com', 'C/playaeo\r\n', '987654321', 'Surfing', 'carnet7.jpg'),
+(6, '12345678t', 'Patricia', 'Vazquez', 'patro_vaq@gmail.com', 'C/ ingreso', '987654321', 'Entrenador P', 'foto9.jpg'),
+(8, '53354483a', 'norberto', 'lopez de la rosa', 'delarosa@gmail.com', 'calle pruebas', '658968954', 'surfing', '1964898_630646093675539_1633451151_n.jpg');
 
 -- --------------------------------------------------------
 
@@ -233,19 +251,42 @@ INSERT INTO `monitores` (`id_monitor`, `dni_monitor`, `nombre_monitor`, `apellid
 CREATE TABLE `playas` (
   `id_playa` mediumint(9) NOT NULL,
   `nombre_playa` varchar(50) NOT NULL,
-  `tipo_playa` varchar(50) NOT NULL
+  `longitud_playa` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `playas`
 --
 
-INSERT INTO `playas` (`id_playa`, `nombre_playa`, `tipo_playa`) VALUES
-(1, 'snnaper rocks', 'arena'),
-(2, 'pipeline', 'arrecife'),
-(3, 'el palmar', 'arena'),
-(4, 'peniche beach', 'arena/roca'),
-(5, 'Gimnasio', 'Entrenamiento personal');
+INSERT INTO `playas` (`id_playa`, `nombre_playa`, `longitud_playa`) VALUES
+(1, 'snnaper rocks', '200'),
+(2, 'pipeline', '100'),
+(3, 'Los caños', '500'),
+(4, 'Peniche Beach', '100'),
+(5, 'Gimnasio', '50000');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `settings`
+--
+
+CREATE TABLE `settings` (
+  `id` int(1) NOT NULL,
+  `dayColor` varchar(6) NOT NULL,
+  `weekendColor` varchar(6) NOT NULL,
+  `todayColor` varchar(6) NOT NULL,
+  `eventColor` varchar(6) NOT NULL,
+  `iteratorColor1` varchar(6) NOT NULL,
+  `iteratorColor2` varchar(6) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `settings`
+--
+
+INSERT INTO `settings` (`id`, `dayColor`, `weekendColor`, `todayColor`, `eventColor`, `iteratorColor1`, `iteratorColor2`) VALUES
+(1, 'e6e1d3', 'a0a395', 'ffeb45', 'fa0032', 'e6ffab', 'ffffff');
 
 -- --------------------------------------------------------
 
@@ -284,7 +325,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `clave`, `tipo`) VALUES
-(1, 'administrador', 'adk6oNRwypFwA', 'admin');
+(1, 'administrador', 'adk6oNRwypFwA', 'admin'),
+(2, 'pepa', 'peCZ6hLRd2cMY', 'gestor'),
+(3, 'norberto', 'noSqdRUGZ9.Xk', 'gestor'),
+(4, 'norberto1', 'noh2QycLBRdT2', 'gestor'),
+(5, 'anacleta', 'ansmUzUNIMOL2', 'gestor'),
+(6, 'pruebaso', 'prydxcVtuiceQ', 'gestor');
 
 --
 -- Índices para tablas volcadas
@@ -327,9 +373,9 @@ ALTER TABLE `cursos`
   ADD KEY `monitoresDanCursos` (`id_monitor`);
 
 --
--- Indices de la tabla `eventos`
+-- Indices de la tabla `event`
 --
-ALTER TABLE `eventos`
+ALTER TABLE `event`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -351,6 +397,12 @@ ALTER TABLE `playas`
   ADD PRIMARY KEY (`id_playa`);
 
 --
+-- Indices de la tabla `settings`
+--
+ALTER TABLE `settings`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `user`
 --
 ALTER TABLE `user`
@@ -370,42 +422,47 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alquiler`
 --
 ALTER TABLE `alquiler`
-  MODIFY `id_alquiler` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_alquiler` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_cliente` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_cliente` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `contrato`
 --
 ALTER TABLE `contrato`
-  MODIFY `id_contrato` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_contrato` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_curso` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_curso` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT de la tabla `eventos`
+-- AUTO_INCREMENT de la tabla `event`
 --
-ALTER TABLE `eventos`
+ALTER TABLE `event`
   MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id_material` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_material` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `monitores`
 --
 ALTER TABLE `monitores`
-  MODIFY `id_monitor` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_monitor` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `playas`
 --
 ALTER TABLE `playas`
   MODIFY `id_playa` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `settings`
+--
+ALTER TABLE `settings`
+  MODIFY `id` int(1) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `user`
 --
@@ -415,7 +472,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- Restricciones para tablas volcadas
 --
