@@ -11,11 +11,7 @@ session_start();
 		
 			<div class="pagina">
 				<div class="log">
-					<div style="text-align:left;float:left; padding-left:10px;">
-                        <?php $dia=date("j");
-				              $mes=date("n");
-				              $ano=date("y");
-				              print "Hoy es $dia del $mes de 20$ano";?></div>
+					
 					<?php 
 					//Aquí mostramos al usuario, o la opción de loguear, o la de cerrar sesión si ya esta logueado
 					
@@ -43,11 +39,11 @@ session_start();
 				</div>
 				<div class="localizacion">
 				</div>
-				<hr color="#73777C"></hr>
+				<hr color="#2EFE64"></hr>
 				
 				<div class="menu">
 					<div class="menutitulo">
-						Acceso Público
+						Acceso General
 					</div>
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="url/inicio.php">Inicio</a></div>
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="url/actividades.php">Actividades</a></div>
@@ -120,7 +116,7 @@ session_start();
 					</div>
 					<div style="height:20px"></div>
 					<div class="menutitulo">
-						Webs Amigas
+						Patrocinadores
 					</div>
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.ripcurl.com"><img src="img/tuenti.jpg" width="33"></img>&nbsp Rip Curl</a></div>
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.billabong.com"><img src="img/twitter.jpg" width="33"></img>&nbsp Billabong</a></div>
