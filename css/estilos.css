@@ -1,0 +1,376 @@
+body
+{
+	font-family: Georgia;
+	background-color: white;
+}
+
+.pagina
+{
+	width: 800px;
+	border-bottom:solid 1px #01DF74;
+	border-right:solid 1px #01DF74;
+	border-left:solid 1px #01DF74;
+	padding-top:0px;
+	margin-top:0px;
+	height:1300px;
+	background-color:#FBFBEF;
+}
+
+.error
+{
+	font-size:10px;
+	color:red;
+}
+
+.log
+{
+	float:right;
+	width: 550px;
+	border:solid 1px #BEBEAA;
+	height:20px;
+	background-color:#ffcc66;
+	text-align:right;
+	padding-right:10px;
+	padding-top:5px;
+	font-size:10px;
+	color:#190707;
+	margin-bottom:0px;
+	
+}
+
+.log a
+{
+	text-decoration:none;
+	color:#000000;
+}
+
+.log2
+{
+	text-align:center;
+	width: 500px;
+	border:solid 1px #BEBEAA;
+	height:25px;
+	background-color:##ffcc66;
+	padding-right:10px;
+	padding-top:5px;
+	font-size:10px;
+	color:#2ECCFA;
+	
+}
+
+.log2 a
+{
+	text-decoration:none;
+	color:#000000;
+}
+
+.logo
+{
+	float:left;
+	width:50px;
+	margin-top:20px;
+	margin-left:30px;
+	display:inline;
+}
+
+.cabezera
+{
+	text-align:right;
+	background-color:#ffcc66;
+	
+}
+
+.localizacion
+{
+	height:25px;
+	background-color:##2EFE64;
+	padding-left:10px;
+	padding-top:5px;
+	text-align:left;
+	font-size:12px;
+	
+}
+
+.clearl
+{
+	clear:left;
+	width:0px;
+	height:0px;
+	background-color:#ffcc66;
+}
+
+.clearr
+{
+	clear:right;
+	width:0px;
+	height:0px;
+	background-color:#ffcc66;
+}
+
+.menu
+{
+	float:left;
+	width:200px;
+	height:100px;
+	margin-left:5px;
+	margin-top:10px;
+	margin-right:10xp;
+}
+
+.menutitulo
+{
+	border-top:solid 1px #B6B4A9;
+	border-bottom:solid 1px #B6B4A9;
+	background-color:#ffcc66;
+	height:30px;
+	padding-top:8px;
+	margin-bottom:5px;
+	font-weight:bold;	
+}
+
+
+.listamenu
+{
+	background-color:#F3F4EC;
+	border-top:solid 1px #FACC2E;
+	border-bottom:solid 1px #FACC2E;
+	height:20px;
+	padding:2px;
+	padding-left:6px;
+	margin-bottom:3px;
+
+	text-align:left;
+    font-size:14px;
+}
+ 
+.listamenu a
+{
+    
+    text-decoration:none;
+	color:#04B45F;
+	font-weight:bold;
+	display:block; 
+}
+
+.listamenu a:hover 
+{
+    background-color:#DDDFCA;
+	color:#383D43;
+	padding-bottom:3px;
+}
+
+.listamenu2
+{
+	background-color:#DDDFCA;
+	border-top:solid 1px #CCCFBC;
+	border-bottom:solid 1px #CCCFBC;
+	height:20px;
+	padding:2px;
+	padding-left:6px;
+	margin-bottom:3px;
+
+	text-align:left;
+    font-size:14px;
+}
+ 
+.listamenu2 a
+{
+    
+    text-decoration:none;
+	color:#087021;
+	font-weight:bold;
+	display:block; 
+}
+
+.listamenu3 a:hover 
+{
+    background-color:#DDDFCA;
+	color:#383D43;
+	padding-bottom:3px;
+}
+
+.listamenu3
+{
+	background-color:#F3F4EC;
+	border-top:solid 1px #CCCFBC;
+	border-bottom:solid 1px #CCCFBC;
+	height:20px;
+	padding:2px;
+	padding-left:6px;
+	margin-bottom:3px;
+
+	text-align:left;
+    font-size:14px;
+}
+ 
+.listamenu3 a
+{
+    
+    text-decoration:none;
+	color:#DF7401;
+	font-weight:bold;
+	display:block; 
+}
+
+.listamenu3 a:hover 
+{
+    background-color:#DDDFCA;
+	color:#383D43;
+	padding-bottom:3px;
+}
+
+
+.botonmenu
+{
+	float:left;
+	margin-top:2px; 
+	margin-right:3px;
+	margin-bottom:-3px;
+}
+
+.franja
+{
+	height:700px;
+	width:15px;
+	background-color:#5F04B4;
+	float:left;
+}
+
+.contenido
+{
+	height:750px;
+	width:550px;
+	float:left;
+	margin-left:20px;
+	margin-top:10px;
+}
+
+.inicio
+{
+	font-family:Palatino;
+	font-size:18px;
+	color:#383D43;
+}
+
+.titulomenu
+{
+	font-family:Palatino;
+	color:#383D43;
+	font-size:22px;
+	text-align:left;
+	margin-bottom:10px;
+	padding-left:10px;
+	border-left:solid #33cccc 8px;
+}
+
+.cuerpomenu
+
+{
+	font-family:Georgia;
+	font-size:16px;
+	text-align:justify;
+	border-left:solid #ffcc66 8px;
+	padding-left:10px;
+	margin-bottom:10px;
+}
+
+.tablediary	TH 
+{
+	font-size: 10pt;
+	
+	color: white; 
+	background: #0174DF; 
+	text-align: left;
+	font-family:Palatino;
+	padding:6px;
+}
+
+.tablediary	TD
+{
+	font-size: 10pt; 
+	background: #F3F4EC;
+	padding:6px;
+	font-family:Georgia;
+}
+.preguntalogin
+{
+	font-family:Palatino;
+	font-size:18px;	
+}
+
+.formulariol
+{
+	text-align:left;
+	font-family:Palatino;
+}
+
+.añadircontancto
+{
+	display:inline;
+	float:left;
+}
+
+.botomborrar
+{
+	
+	font-family:Palatino;
+}
+
+.fotosg
+{
+	height:120px;
+	width:200px;
+	margin:15px;
+	
+	border-color:#FACC2E;
+	-moz-border-radius-topleft:
+}
+
+.fotitos
+{
+	float:left;
+}
+
+.paginado
+{
+	text-align:center;
+	font-family:Palatino;
+	margin-top:15px;
+	
+}
+
+.botompag
+{
+	border: 0px;
+	text-align:center;
+}
+
+.pie2
+{
+	font-family:Palatino;
+	width:800px;
+	font-size:14px;
+	border-top:solid 5px #73777C;
+	color:#000000;
+	text-align:right;
+	margin-bottom:20px;
+	margin-top:30px;
+}
+
+	
+
+
+.preguntalogin2
+{
+	font-family:Palatino;
+	font-size:18px;	
+	text-decoration:none;
+	text-align:center;
+}
+
+.preguntalogin a
+{
+	font-family:Palatino;
+	font-size:18px;	
+	text-decoration:none;
+}
