@@ -3,7 +3,8 @@
 session_start();
 include("db_configuration.php");
 
-include("encabezado.php");
+include_once("encabezado.php");
+
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 				$usuario=$_REQUEST['usuariol'];
