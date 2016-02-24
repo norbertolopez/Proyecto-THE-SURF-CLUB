@@ -1,6 +1,12 @@
 <?php
 session_start();
 ?>
+
+<?php
+
+include_once("./db_configuration.php");
+
+?>
 <html>
 	<head>
 		<title>THE SURF CLUB</title>
