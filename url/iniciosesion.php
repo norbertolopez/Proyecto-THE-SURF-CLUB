@@ -2,11 +2,7 @@
 
 session_start();
 
-<?php
 
-include_once("db_configuration.php");
-
-?>
 
 include("encabezado.php");
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
