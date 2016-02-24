@@ -1,10 +1,10 @@
-
-
 <?php
 
-include_once("db_configuration.php");
+session_start();
 
-?>
+?> 
+
+
 
 include("encabezado.php");
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
