@@ -14,7 +14,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 				if (isset ($usuario) && isset ($clave))
 				{
 					// Conectar con el servidor de base de datos.
-      				$conexion = mysql_connect ("localhost", "root", "")
+      				$conexion = mysql_connect ("db_configuration.php")
         				 or die ("No se puede conectar con el servidor");
 
    					// Seleccionar base de datos.
