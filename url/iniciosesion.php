@@ -1,10 +1,9 @@
 <?php
 
 session_start();
-include("db_configuration.php");
+include_once("db_configuration.php");
 
 include_once("encabezado.php");
-
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 				$usuario=$_REQUEST['usuariol'];
@@ -14,11 +13,11 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 				if (isset ($usuario) && isset ($clave))
 				{
 					// Conectar con el servidor de base de datos.
-      				$conexion = mysql_connect ("db_configuration.php")
+      				$conexion = mysql_connect ($db_host,$db_user,$db_password)
         				 or die ("No se puede conectar con el servidor");
 
    					// Seleccionar base de datos.
-     				mysql_select_db ("thesurfclub")
+     				mysql_select_db ($db_name)
          				or die ("No se puede seleccionar la base de datos");
 
    					//Encriptamos la contraseña.
