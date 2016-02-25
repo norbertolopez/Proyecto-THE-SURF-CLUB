@@ -12,9 +12,7 @@ if (!isset($_SESSION['usuario']))
 else
 {
 	$usuario=$_SESSION['usuario'];
-	/*$usuario3=$_REQUEST['usuario3']; */
-	/*$actividad=$_REQUEST['actividad']; */
-	/*$buscar=$_REQUEST['buscar']; */
+	
 	
 ?>
 	<div class="titulomenu">Clientes > </div><div class="imagentitulo"></div> 
@@ -36,8 +34,9 @@ else
 								
 		//Empezamos la paginación.
 		$num=4;
-								
-		$comienzo=$_REQUEST['comienzo'];
+					if(isset($_REQUEST['comienzo'])){				
+ 	$comienzo=$_REQUEST['comienzo']; 
+            }
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
@@ -136,12 +135,7 @@ else
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion;
-				//$_SESSION['consulta2']=$usuario;
-				$_SESSION['pag']="clientes";
-				?>
 				
-				<?PHP
 				
 		}
       	else

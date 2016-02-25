@@ -13,13 +13,7 @@ else
 				include("../lib/fecha.php");
 				$error="";
 				
-				$usuariol=$_REQUEST['usuariol'];
-				$nombrel=$_REQUEST['nombrel'];
-				$apellidol=$_REQUEST['apellidol'];
-				$dnil=$_REQUEST['dnil'];
-				$cursol=$_REQUEST['cursol'];
-				$enviarl=$_REQUEST['enviarl'];
-				$borrarl=$_REQUEST['borrarl'];
+
 				$err=false;
 				
 				// Subir fichero
@@ -100,7 +94,7 @@ else
    					}
 					
       			}
-      			if(isset($enviarl) && $error=="")
+      			if(isset($_REQUEST['enviarl']) && $error=="")
    				{ 
    						// Conectar con el servidor de base de datos
       					$conexion = mysql_connect ("localhost", "root", "")
@@ -112,22 +106,22 @@ else
 						$usuario2=$_SESSION['usuario'];
 						
    						// Enviar consulta para insertar contacto en la agenda.
-						$instruccion = "insert into clientes (nombre_cliente,apellidos_cliente,dni_cliente) values ('$nombrel','$apellidol','$dnil')";
+						$instruccion = "insert into clientes (nombre_cliente,apellidos_cliente,dni_cliente) values ('".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."','".$_REQUEST['dnil']."')";
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consultass32a");  
-						$instruccion2="select id_cliente from clientes where dni_cliente='$dnil'";
+						$instruccion2="select id_cliente from clientes where dni_cliente='".$_REQUEST['dnil']."'";
 						$consulta2 = mysql_query ($instruccion2, $conexion)
         					 or die ("Fallo en la consultass32b"); 
 						$resultado2=mysql_fetch_array($consulta2);
 						$cliente=$resultado2['id_cliente'];
-						$instruccion3="insert into clientecursos (id_curso,id_cliente) values ('$cursol','$cliente')";
+						$instruccion3="insert into clientecursos (id_curso,id_cliente) values ('".$_REQUEST['cursol']."','$cliente')";
 						$consulta3 = mysql_query ($instruccion3, $conexion)
         					 or die ("Fallo en la consultass32c");
          				mysql_close ($conexion);
-						$emaill=cambiaf_a_normal($emaill);
-						$telefonol=cambiaf_a_normal($telefonol);
+				//		$emaill=cambiaf_a_normal($emaill);
+				//		$telefonol=cambiaf_a_normal($telefonol);
          			?>
-   					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente a<?php print" $nombrel";?> a Clientes!</div>
+   					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente al Cliente   !</div>
    					<div class="cuerpomenu">
    					<table  border="0">
    						<tr>
@@ -136,19 +130,19 @@ else
    						</tr>
    						<tr>
    							<td>Nombre:</td>
-   							<td><?php print("$nombrel")?></td>
+   							<td><?php print($_REQUEST['nombrel'])?></td>
    						</tr>
    						<tr>
    							<td>Apellido:</td>
-   							<td><?php print("$apellidol")?></td>
+   							<td><?php print($_REQUEST['apellidol'])?></td>
    						</tr>
    						<tr>
    							<td>DNI:</td>
-   							<td><?php print("$dnil")?></td>
+   							<td><?php print($_REQUEST['dnil'])?></td>
    						</tr>
 						<tr>
    							<td> ID Curso:</td>
-   							<td><?php print("$cursol")?></td>
+   							<td><?php print($_REQUEST['cursol'])?></td>
    						</tr>
    					</table>
    					<br/>
@@ -167,26 +161,38 @@ else
 						<br/>
 						<fieldset class="formulariol">
 								Nombre *:<input type="text"  name="nombrel"></input>
-								<?php if ($error[nombrel]!="")
-									print("<span class='error'>$error[nombrel]</span>");
+								<?php
+                    if (isset($error['nombrel'])) {
+                    if ($error['nombrel']!="")
+									print("<span class='error'>".$error[nombrel]."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Apellido *:<input type="text"  name="apellidol"></input>
-								<?php if ($error[apellidol]!="")
-									print("<span class='error'>$error[apellidol]</span>");
+								<?php
+                    if (isset($error['apellidol'])) {
+                    if ($error['apellidol']!="")
+									print("<span class='error'>".$error['apellidol']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								DNI *:<input type="text"  name="dnil"></input>
-								<?php if ($error[dnil]!="")
-									print("<span class='error'>$error[dnil]</span>");
+								<?php
+                    if (isset($error['dnil'])) {
+                    if ($error['dnil']!="")
+									print("<span class='error'>".$error['dnil']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								ID Curso *:<input type="text"  name="cursol"></input>
-								<?php if ($error[cursol]!="")
-									print("<span class='error'>$error[cursol]</span>");
+								<?php
+                        if (isset($error['cursol'])) {
+                        if ($error['cursol']!="")
+									print("<span class='error'>".$error['cursol']."</span>");
+                        }
 								?>
 							<br/>
 							<br/>

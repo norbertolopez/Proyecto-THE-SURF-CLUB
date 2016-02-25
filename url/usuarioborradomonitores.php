@@ -14,7 +14,9 @@ $img=$_REQUEST['img'];
      					mysql_select_db ("thesurfclub")
          					or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
+                        if (isset($nombreFichero)){
 						$imgagen2=$nombreFichero;
+                        }
 						
    						// Enviar consulta que borre el usuario pasado por url.
    						$sesion2=$_SESSION['usuario'];

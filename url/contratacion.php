@@ -13,17 +13,7 @@ else
 {
 	include("../lib/fecha.php");
 	$usuario=$_SESSION['usuario'];
-/*	$usuario3=$_REQUEST['usuario3']; */
-/*	$actividad=$_REQUEST['actividad']; */
-/*	$buscar=$_REQUEST['buscar']; */
-	$error="";
-	if (isset($buscar))
-   	{
-		if ((!preg_match("/[0-9]{1,2}\/[0-9]{1,2}\/([0-9][0-9]){1,2}/",$usuario3)) && $usuario3!="")
-		{
-			$error["usuario3"]="Fecha introducida incorrecta";
-		}
-	}		
+		
 	
 ?>
 	<div class="titulomenu">Contratación > </div><div class="imagentitulo"></div> 
@@ -41,12 +31,12 @@ else
 			or die ("No se puede seleccionar la base de datos");
 									
 		$usuario2=$_SESSION['usuario'];
-		/* $imgagen2=$nombreFichero; */
-	/*	$usuario4=cambiaf_a_mysql($usuario3);	*/
+	
 		//Empezamos la paginación.
 		$num=4;
-								
-		$comienzo=$_REQUEST['comienzo'];
+					if(isset($_REQUEST['comienzo'])){				
+ 	$comienzo=$_REQUEST['comienzo']; 
+            }
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
@@ -144,16 +134,10 @@ else
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion;
-				//$_SESSION['consulta2']=$usuario;
-				$_SESSION['pag']="contrato";
-				?>
 				
-				<?PHP
 				
 		}
-      	else
-         	print ("No hay Contrato, con las caracteristicas introducidas");
+      	
    			
 			//Cerramos la conexión con la base de datos.
          	mysql_close ($conexion);

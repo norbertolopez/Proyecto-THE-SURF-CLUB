@@ -6,16 +6,12 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 				//Rescato datos del formulario.
 				$error="";
-				$usuariol=$_REQUEST['usuariol'];
-				$contraseñal=$_REQUEST['contraseñal'];
-				$enviarl=$_REQUEST['enviarl'];
-				$borrarl=$_REQUEST['borrarl'];
 				$err=FALSE;
       			
-      			if (isset($enviarl))
+      			if (isset($_REQUEST['usuariol']))
    				{
 					//Compruebo que el usuario no este en blanco.
-     				if (trim($usuariol)=="")
+     				if (trim($_REQUEST['usuariol'])=="")
      				{
      					$error["usuariol"]="Campo marcado (*) requerido";
      					$err=TRUE;
@@ -30,7 +26,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
          				or die ("No se puede seleccionar la base de datos");
 
    					// Enviar consulta para comprobar si el usuario ya existe.
-					$instruccion = "select usuario from usuarios where usuario='$usuariol'";
+					$instruccion = "select usuario from usuarios where usuario='".$_REQUEST['usuariol']."';";
 					$consulta = mysql_query ($instruccion, $conexion)
         				 or die ("Fallo en la consulta112");
         			 
@@ -45,21 +41,21 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
          			mysql_close ($conexion);	
    				
    					//Control de errores de contraseña.
-     				if (trim($contraseñal)=="")
+     				if (trim($_REQUEST['contraseñal'])=="")
      				{
      					$error["contraseñal"]="Campo marcado (*) requerido";
      					$err=TRUE;
      				}
      			
-     				if (!preg_match('/^[0-9, a-z, A-Z]{8}$/', $contraseñal))
+     				if (!preg_match('/^[0-9, a-z, A-Z]{8}$/', $_REQUEST['contraseñal']))
      				{
-     					$error["contraseñal"]="Contraseña invalida (8 caracteres dell 0 al 9, a-z, A-Z)";
+     					$error["contraseñal"]="Contraseña invalida (8 caracteres del 0 al 9, a-z, A-Z)";
      					$err=TRUE;
      				}	
    				}
       			
 				//Si no hay errores me conecto a la base de datos e introduzco al usuario con su clave.
-      			if(isset($enviarl) && $err==FALSE)
+      			if(isset($_REQUEST['enviarl']) && $err==FALSE)
    				{
    						// Conectar con el servidor de base de datos
       					$conexion = mysql_connect ("localhost", "root", "")
@@ -70,31 +66,14 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
          					or die ("No se puede seleccionar la base de datos");
 
    						// Enviar consulta
-						$salt=substr($usuariol, 0,2);
-						$clave2=crypt ($contraseñal, $salt);
+						$salt=substr($_REQUEST['usuariol'], 0,2);
+						$clave2=crypt ($_REQUEST['contraseñal'], $salt);
 						
-						$instruccion = "insert into usuarios (usuario,clave,tipo) values ('$usuariol','$clave2','gestor')";
+						$instruccion = "insert into usuarios (usuario,clave,tipo) values ('".$_REQUEST['usuariol']."','$clave2','gestor')";
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consulta333");
    												
-						/*//Cuando creamos un usuario, ademas de meterlo en sesión creamos una tabla, donde seran almacenados los usuarios de su agenda.
-        				$instruccion2="
-
-        				CREATE TABLE `friends_diary_db`.`agenda_$usuario2` (
-										`id` INT( 5 ) NOT NULL AUTO_INCREMENT ,
-										`nombre` VARCHAR( 30 ) NOT NULL ,
-										`telefono` VARCHAR( 9 ) NOT NULL ,
-										`email` VARCHAR( 30 ) NOT NULL ,
-										`direcion` VARCHAR( 40 ) NOT NULL ,
-										`edad` VARCHAR( 10 ) NULL ,
-										`sexo` VARCHAR( 10 ) NULL ,
-										`comentarios` VARCHAR( 125 ) NULL ,
-										`imagen` VARCHAR( 200 ) NOT NULL ,
-										PRIMARY KEY ( `id` )
-						) ENGINE = MYISAM";        				
-        				
-        				$consulta2 = mysql_query ($instruccion2, $conexion)
-        					 or die ("Fallo en la consulta444");*/
+						
         				
          				mysql_close ($conexion);	
 					?>  		
@@ -116,14 +95,20 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 						<br/>
 						<fieldset class="formulariol">
 								Usuario *:<input type="text"  name="usuariol"></input>
-								<?php if ($error[usuariol]!="")
+								<?php if (isset($error['usuariol'])) {
+                                if ($error['usuariol']!="")
 									print("<span class='error'>$error[usuariol]</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Contraseña *:<input type="password"  name="contraseñal"></input>
-								<?php if ($error[contraseñal]!="")
+								<?php 
+                    if (isset($error['contraseñal'])) {
+                            if ($error['contraseñal']!="")
 									print("<span class='error'>$error[contraseñal]</span>");
+                        
+                    }
 								?>
 							<br/>
 							<br/>

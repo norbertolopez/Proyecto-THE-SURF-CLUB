@@ -12,12 +12,7 @@ else
 {
 				include("../lib/fecha.php");
 				$error="";
-				$usuariol=$_REQUEST['usuariol'];
-				$nombrel=$_REQUEST['nombrel'];
-				$apellidol=$_REQUEST['apellidol'];
-				$dnil=$_REQUEST['dnil'];
-				$enviarl=$_REQUEST['enviarl'];
-				$borrarl=$_REQUEST['borrarl'];
+		
 				$err=false;
 				
 				// Subir fichero
@@ -74,7 +69,7 @@ else
    					}
 					
       			}
-      			if(isset($enviarl) && $error=="")
+      			if(isset($_REQUEST['enviarl']) && $error=="")
    				{ 
    						// Conectar con el servidor de base de datos
       					$conexion = mysql_connect ("localhost", "root", "")
@@ -86,14 +81,14 @@ else
 						$usuario2=$_SESSION['usuario'];
 						
    						// Enviar consulta para insertar contacto en la agenda.
-						$instruccion = "insert into material (nombre_material,tipo_material,modelo_material) values ('$nombrel','$apellidol','$dnil')";
+						$instruccion = "insert into material (nombre_material,tipo_material,modelo_material) values ('".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."','".$_REQUEST['dnil']."')";
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consultass32");        					
          				mysql_close ($conexion);
-						$emaill=cambiaf_a_normal($emaill);
-						$telefonol=cambiaf_a_normal($telefonol);
+					//	$emaill=cambiaf_a_normal($emaill);
+					//	$telefonol=cambiaf_a_normal($telefonol);
          			?>
-   					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente a<?php print" $nombrel";?> a Material!</div>
+   					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente el Material Deseado!</div>
    					<div class="cuerpomenu">
    					<table  border="0">
    						<tr>
@@ -102,15 +97,15 @@ else
    						</tr>
    						<tr>
    							<td>Nombre:</td>
-   							<td><?php print("$nombrel")?></td>
+   							<td><?php print($_REQUEST['nombrel'])?></td>
    						</tr>
    						<tr>
    							<td>Tipo:</td>
-   							<td><?php print("$apellidol")?></td>
+   							<td><?php print($_REQUEST['apellidol'])?></td>
    						</tr>
    						<tr>
    							<td>Modelo:</td>
-   							<td><?php print("$dnil")?></td>
+   							<td><?php print($_REQUEST['dnil'])?></td>
    						</tr>
    					</table>
    					<br/>
@@ -129,20 +124,29 @@ else
 						<br/>
 						<fieldset class="formulariol">
 								Nombre *:<input type="text"  name="nombrel"></input>
-								<?php if ($error[nombrel]!="")
-									print("<span class='error'>$error[nombrel]</span>");
+								<?php
+                    if (isset($error['nombrel'])) {
+                    if ($error['nombrel']!="")
+									print("<span class='error'>".$error['nombrel']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Tipo *:<input type="text"  name="apellidol"></input>
-								<?php if ($error[apellidol]!="")
-									print("<span class='error'>$error[apellidol]</span>");
+								<?php
+                    if (isset($error['apellidol'])) {
+                    if ($error['apellidol']!="")
+									print("<span class='error'>".$error['apellidol']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Modelo *:<input type="text"  name="dnil"></input>
-								<?php if ($error[dnil]!="")
-									print("<span class='error'>$error[dnil]</span>");
+								<?php 
+                    if (isset($error['dnil'])) {
+                    if ($error['dnil']!="")
+									print("<span class='error'>".$error['dnil']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>

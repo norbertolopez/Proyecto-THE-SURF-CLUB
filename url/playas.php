@@ -12,9 +12,7 @@ if (!isset($_SESSION['usuario']))
 else
 {
 	$usuario=$_SESSION['usuario'];
-	/*$usuario3=$_REQUEST['usuario3'];*/
-	/*$actividad=$_REQUEST['actividad'];*/
-	/*$buscar=$_REQUEST['buscar'];*/
+
 	
 ?>
 	<div class="titulomenu">Playas > 
@@ -25,8 +23,11 @@ else
 		<?PHP
 			//Empezamos la paginación.
 			$num=4;
-									
-			$comienzo=$_REQUEST['comienzo'];
+			
+           			if(isset($_REQUEST['comienzo'])){				
+ 	$comienzo=$_REQUEST['comienzo']; 
+            }
+    
 			if(!isset($comienzo)) 
 				$comienzo=0;
 			
@@ -107,16 +108,10 @@ else
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion2;
-				//$_SESSION['consulta2']=$usuario;
-				$_SESSION['pag']="playas";
-				?>
 				
-				<?PHP
 				
 		}
-      	else
-         	print ("No hay Playas, con las caracteristicas introducidas");
+      	
    			
 			//Cerramos la conexión con la base de datos.
          	mysql_close ($conexion);

@@ -11,20 +11,7 @@ if (!isset($_SESSION['usuario']))
 else
 {
 				$error="";
-				$usuariol=$_REQUEST['usuariol'];
-				$contraseñal=$_REQUEST['contraseñal'];
-				$nombrel=$_REQUEST['nombrel'];
-				$apellidol=$_REQUEST['apellidol'];
-				$direcionl=$_REQUEST['direcionl'];
-				$dnil=$_REQUEST['dnil'];
-				$direcionl=$_REQUEST['direcionl'];
-				$telefonol=$_REQUEST['telefonol'];
-				$emaill=$_REQUEST['emaill'];
-				$actividadl=$_REQUEST['actividadl'];
-				$max_file_size=$_REQUEST['MAX_FILE_SIZE'];
-				$imagenl2=$_FILES['imagenl']['name'];
-				$enviarl=$_REQUEST['enviarl'];
-				$borrarl=$_REQUEST['borrarl'];
+
 				$err=false;
 				
 				// Subir fichero
@@ -39,7 +26,9 @@ else
      					mysql_select_db ("thesurfclub")
          					or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
+                    if(isset($nombreFichero)){
 						$imgagen2=$nombreFichero;
+    }
 						
    						// Enviar consulta para selecionar los detalles de la id pasados por URL.
    						$sesion2=$_SESSION['usuario'];
@@ -49,10 +38,10 @@ else
          				$resultado = mysql_fetch_array ($consulta);
 				
 				
-      			if (isset($enviarl))
+      			if (isset($_REQUEST['enviarl']))
    				{
      				//Comprobación de Errores.
-   					if (trim($nombrel)=="")
+   					if (trim($_REQUEST['nombrel'])=="")
      				{
      					$error["nombrel"]="Campo marcado (*) requerido";
      					$err=true;
@@ -60,53 +49,53 @@ else
      				
      				
 					
-					if (trim($apellidol)=="")
+					if (trim($_REQUEST['apellidol'])=="")
      				{
      					$error["apellidol"]="Campo marcado (*) requerido";
      					$err=true;
      				}
 					
-					if (trim($telefonol)=="")
+					if (trim($_REQUEST['telefonol'])=="")
      				{
      					$error["telefonol"]="Campo marcado (*) requerido";
      					$err=true;
      				}
 					
-					if (trim($dnil)=="")
+					if (trim($_REQUEST['dnil'])=="")
      				{
      					$error["dnil"]="Campo marcado (*) requerido";
      					$err=true;
      				}
 					
-     				if (!preg_match('/^[0-9]{9}$/', $telefonol))
+     				if (!preg_match('/^[0-9]{9}$/', $_REQUEST['telefonol']))
      				{	
      					$error["telefonol"]="Telefono Invalido, Teclee un telefono correcto";
      					$err=true;
      				}
      			
-     				if (trim($emaill)=="")
+     				if (trim($_REQUEST['emaill'])=="")
      				{
      					$error["emaill"]="Campo marcado (*) requerido";
      					$err=true;
      				}
-      				if (trim($actividadl)=="")
+      				if (trim($_REQUEST['actividadl'])=="")
      				{
      					$error["actividadl"]="Campo marcado (*) requerido";
      					$err=true;
      				}    				
-   					if (trim($direcionl)=="")
+   					if (trim($_REQUEST['direcionl'])=="")
      				{
      					$error["direcionl"]="Campo marcado (*) requerido";
      					$err=true;
      				}
      			
-     				if (!preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$emaill))
+     				if (!preg_match('/^[^0-9][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[@][a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{2,4}$/',$_REQUEST['emaill']))
      				{	
      					$error["emaill"]="Email Invalido, Teclee un email correcto";
      					$err=true;
      				}
     				
-					if (!preg_match('/^[0-9]{8}[a-z,A-Z]{1}$/',$dnil))
+					if (!preg_match('/^[0-9]{8}[a-z,A-Z]{1}$/',$_REQUEST['dnil']))
 					{
 						$error["dnil"]="DNI Incorrecto, 8digitos + 1 Letra";
 						$err=TRUE;
@@ -147,7 +136,7 @@ else
 				         $err = true;
 				      }
 						
-					if (trim($imagenl2)=="")
+					if (trim($_FILES['imagenl']['name'])=="")
 					{
 						$error["imagenl"]="Campo marcado (*) requerido";
 						 $err = true;
@@ -159,7 +148,7 @@ else
 						}
    				}
       			
-      			if(isset($enviarl) && $error=="")
+      			if(isset($_REQUEST['enviarl']) && $error=="")
    				{ 
    						// Conectar con el servidor de base de datos
       					$conexion = mysql_connect ("localhost", "root", "")
@@ -171,7 +160,7 @@ else
 						$usuario2=$_SESSION['usuario'];
    						// Enviar consulta para insertar contacto en la agenda.
 
-						 	$instruccion="update monitores set  dni_monitor='$dnil',nombre_monitor='$nombrel',apellidos_monitor='$apellidol',email_monitor='$emaill',telefono_monitor='$telefonol',direccion_monitor='$direcionl',actividad_monitor='$actividadl',foto_monitor='$nombreFichero' WHERE id_monitor='$id'";
+						 	$instruccion="update monitores set  dni_monitor='".$_REQUEST['dnil']."',nombre_monitor='".$_REQUEST['nombrel']."',apellidos_monitor='".$_REQUEST['apellidol']."',email_monitor='".$_REQUEST['emaill']."',telefono_monitor='".$_REQUEST['telefonol']."',direccion_monitor='".$_REQUEST['direcionl']."',actividad_monitor='".$_REQUEST['actividadl']."',foto_monitor='$nombreFichero' WHERE id_monitor='$id'";
 						 	$consulta=mysql_query($instruccion,$conexion)
 						 		or die("Fallo en la actualización");
 						 	mysql_close ($conexion);
@@ -179,7 +168,7 @@ else
          				if ($copiarFichero)
        						  move_uploaded_file ($_FILES['imagenl']['tmp_name'],$nombreDirectorio . $nombreFichero);	
    					?>
-   					<div class="titulomenu">¡Enorabuena ha actualizado satifactoriamente a<?php print" $nombrel";?> a monitores!</div>
+   					<div class="titulomenu">¡Enorabuena ha actualizado satifactoriamente el monitor!</div>
    					<div class="cuerpomenu">
    					<table  border="0">
    						<tr>
@@ -188,31 +177,31 @@ else
    						</tr>
    						<tr>
    							<td>Nombre:</td>
-   							<td><?php print("$nombrel")?></td>
+   							<td><?php print($_REQUEST['nombrel'])?></td>
    						</tr>
    						<tr>
    							<td>Apellido:</td>
-   							<td><?php print("$apellidol")?></td>
+   							<td><?php print($_REQUEST['apellidol'])?></td>
    						</tr>
    						<tr>
    							<td>DNI:</td>
-   							<td><?php print("$dnil")?></td>
+   							<td><?php print($_REQUEST['dnil'])?></td>
    						</tr>
    						<tr>
    							<td>Direccion:</td>
-   							<td><?php print("$direcionl")?></td>
+   							<td><?php print($_REQUEST['direcionl'])?></td>
    						</tr>
    						<tr>
    							<td>Teléfono:</td>
-   							<td><?php print("$telefonol")?></td>
+   							<td><?php print($_REQUEST['telefonol'])?></td>
    						</tr>
    						<tr>
    							<td>Correo Electronico:</td>
-   							<td><?php print("$emaill")?></td>
+   							<td><?php print($_REQUEST['emaill'])?></td>
    						</tr>
 						<tr>
    							<td>Actividad:</td>
-   							<td><?php print("$actividadl")?></td>
+   							<td><?php print($_REQUEST['actividadl'])?></td>
    						</tr>  						
    						<tr>
    							<td>Imagen subida:</td>
@@ -235,80 +224,109 @@ else
 						<br/>
 						<fieldset class="formulariol">
 								Nombre *:<input type="text"  name="nombrel" value="<?PHP 
-								if (isset($enviar))
-									print("$nombrel");
+								if (isset($_REQUEST['enviarl']))
+									print($_REQUEST['nombrel']);
 								else
 									print("$resultado[nombre_monitor]");
 								?>"></input>
-								<?php if ($error[nombrel]!="")
-									print("<span class='error'>$error[nombrel]</span>");
+                
+								<?php
+                     if (isset($error['nombrel'])) {
+                    if ($error['nombrel']!="")
+									print("<span class='error'>".$error['nombrel']."</span>");
+                     }
 								?>
 							<br/>
 							<br/>
-								Apellido *:<input type="text"  name="apellidol" value="<?PHP 
-								if (isset($enviar))
-									print("$apellidol");
+								Apellido *:<input type="text"  name="apellidol" value="<?PHP
+                    
+                    
+								if (isset($_REQUEST['enviarl'])) {
+									print($_REQUEST['apellidol']);
+                                    
+                                }
 								else
-									print("$resultado[apellidos_monitor]");
+                                {
+									print($resultado['apellidos_monitor']);
+                    
+                    }
 								?>"></input>
-								<?php if ($error[apellidol]!="")
-									print("<span class='error'>$error[apellidol]</span>");
+								<?php
+                          if (isset($error['apellidol'])) {
+                                   if ($error['apellidol']!="")
+									print("<span class='error'>".$error['apellidol']."</span>");
+                          }
 								?>
 							<br/>
 							<br/>
 								DNI *:<input type="text"  name="dnil" value="<?PHP 
-								if (isset($enviar))
-									print("$dnil");
+								if (isset($_REQUEST['enviarl']))
+									print($_REQUEST['dnil']);
 								else
 									print("$resultado[dni_monitor]");
 								?>"></input>
-								<?php if ($error[dnil]!="")
-									print("<span class='error'>$error[dnil]</span>");
+								<?php
+                    if (isset($error['dnil'])) {
+                    if ($error['dnil']!="")
+									print("<span class='error'>".$error['dnil']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 
 								Teléfono *:<input type="text"  name="telefonol" value="<?PHP 
-								if (isset($enviar))
-									print("$telefonol");
+								if (isset($_REQUEST['enviarl']))
+									print($_REQUEST['telefonol']);
 								else
 									print("$resultado[telefono_monitor]");
 								?>"></input>
-								<?php if ($error[telefonol]!="")
-									print("<span class='error'>$error[telefonol]</span>");
+								<?php
+                    if (isset($error['telefonol'])) {
+                    if ($error['telefonol']!="")
+									print("<span class='error'>".$error['telefonol']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Correo Electrónico *:<input type="text"  name="emaill" value="<?PHP 
-								if (isset($enviar))
-									print("$emaill");
+								if (isset($_REQUEST['enviarl']))
+									print($_REQUEST['emaill']);
 								else
 									print("$resultado[email_monitor]");
 								?>"></input>
-								<?php if ($error[emaill]!="")
-									print("<span class='error'>$error[emaill]</span>");
+								<?php
+                    if (isset($error['emaill'])) {
+                    if ($error['emaill']!="")
+									print("<span class='error'>".$error['emaill']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Dirección *:<input type="text"  name="direcionl" value="<?PHP 
-								if (isset($enviar))
-									print("$direcionl");
+								if (isset($_REQUEST['enviarl']))
+									print($_REQUEST['direcionl']);
 								else
 									print("$resultado[direccion_monitor]");
 								?>"></input>
-								<?php if ($error[direcionl]!="")
-									print("<span class='error'>$error[direcionl]</span>");
+								<?php
+                    if (isset($error['direcionl'])) {
+                    if ($error['direcionl']!="")
+									print("<span class='error'>".$error['direcionl']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Actividad *:<input type="text"  name="actividadl" value="<?PHP 
-								if (isset($enviar))
-									print("$actividadl");
+								if (isset($_REQUEST['enviarl']))
+									print($_REQUEST['actividadl']);
 								else
 									print("$resultado[actividad_monitor]");
 								?>"></input>
-								<?php if ($error[actividadl]!="")
-									print("<span class='error'>$error[actividadl]</span>");
+								<?php
+                    if (isset($error['actividadl'])) {
+                    if ($error['actividadl']!="")
+									print("<span class='error'>".$error['actividadl']."</span>");
+                    }
 								?>
 							<br/>
 
@@ -318,8 +336,11 @@ else
 								Imagen  *:
 								<INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="10002400">					
 								<input type="file" name="imagenl" value="examinar"></input>
-								<?php if ($error["imagenl"]!="")
-									print("<span class='error'>" . $error[imagenl] . "</span>");
+								<?php
+                    if (isset($error['imagenl'])) {
+                    if ($error['imagenl']!="")
+									print("<span class='error'>".$error['imagenl']."</span>");
+                    }
 								?>
 											<p class="error">Los campos marcados con (*) son obligatorios</p>
 							<center>

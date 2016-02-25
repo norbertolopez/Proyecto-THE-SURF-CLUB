@@ -21,6 +21,11 @@ else
 		<br/>
 		<br/>
 		Esperamos que su visita sea de lo mas agradable.
+        
+        <br>
+        
+        <img src="../img/foca.gif" height="170px" width="310px"></img>
+        
 	</div>	
 	<?PHP
 	}

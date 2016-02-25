@@ -13,20 +13,15 @@ else
 {
 	include("../lib/fecha.php");
 	$usuario=$_SESSION['usuario'];
-	/* $fecha_curso=$_REQUEST['fecha_curso']; */
-	/* $buscar=$_REQUEST['buscar']; */
-	$error="";
-	if (isset($buscar))
-   	{
-		if (!preg_match("/[0-9]{1,2}\/[0-9]{1,2}\/([0-9][0-9]){1,2}/",$fecha_curso))
-		{
-			$error["fecha_curso"]="Fecha introducida incorrecta";
-		}
-	}						
+	
+	
+						
 ?>
-	<div class="titulomenu">Cursos > </div><div class="imagentitulo"></div> 
+	<div class="titulomenu">Cursos > 
+<h6> Listado de Cursos de The Surf Club </h6>
+</div><div class="imagentitulo"></div> 
 	<div class="cuerpomenu">
-		<form action="nuevousuario2cursos.php" METHOD="POST">Listado de Cursos de The Surf Club <span style="text-align:right;"><input type="submit" value="Añadir Curso"></span></form>
+        
 		<form ACTION="cursos.php" METHOD="POST">
 		
 		</form>
@@ -47,7 +42,9 @@ else
 		//Empezamos la paginación.
 		$num=4;
 								
-		$comienzo=$_REQUEST['comienzo'];
+					if(isset($_REQUEST['comienzo'])){				
+ 	$comienzo=$_REQUEST['comienzo']; 
+            }
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
@@ -140,12 +137,7 @@ else
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion2;
-				//$_SESSION['consulta2']=$usuario;
-				$_SESSION['pag']="cursos";
-				?>
 				
-				<?PHP
 				
 		}
       	else

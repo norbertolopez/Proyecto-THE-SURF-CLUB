@@ -1,19 +1,16 @@
 <?php
 
 session_start();
-include_once("db_configuration.php");
-
-include_once("encabezado.php");
+include("encabezado.php");
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
-				$usuario=$_REQUEST['usuariol'];
-				$clave=$_REQUEST['contrasenal'];
+		
 				$error=FALSE;
 			
-				if (isset ($usuario) && isset ($clave))
+				if (isset ($_REQUEST['usuariol']) && isset ($_REQUEST['contrasenal']))
 				{
 					// Conectar con el servidor de base de datos.
-      				$conexion = mysql_connect ($db_host,$db_user,$db_password)
+      				$conexion = mysql_connect ($db_host, $db_user , $db_password )
         				 or die ("No se puede conectar con el servidor");
 
    					// Seleccionar base de datos.
@@ -21,11 +18,11 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
          				or die ("No se puede seleccionar la base de datos");
 
    					//Encriptamos la contraseña.
-					$salt=substr($usuario, 0,2);
-					$clave2=crypt ($clave, $salt);
+					$salt=substr($_REQUEST['usuariol'], 0,2);
+					$clave2=crypt ($_REQUEST['contrasenal'], $salt);
 					
 					// Enviar consulta para saber si dicho usuario y clave estan en la base de datos.
-					$instruccion = "select usuario, clave from usuarios where usuario='$usuario' and clave='$clave2'" ;
+					$instruccion = "select usuario, clave from usuarios where usuario='".$_REQUEST['usuariol']."' and clave='$clave2'" ;
 					$consulta = mysql_query ($instruccion, $conexion)
         			 	or die ("Fallo en la consulta");
         			
@@ -34,7 +31,8 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 					//Comprovamos que la consulta tiene almenos una fila, y en caso afirmativo, metemos al usuario en sesión.
         			if ($nfilas > 0)
         			{
-        				$_SESSION['usuario']=$usuario;
+        				$_SESSION['usuario']=$_REQUEST['usuariol'];
+                        $_SESSION['comienzo']=0;
         			}
         			mysql_close($conexion);
 				}		

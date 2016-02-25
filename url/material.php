@@ -12,9 +12,7 @@ if (!isset($_SESSION['usuario']))
 else
 {
 	$usuario=$_SESSION['usuario']; 
-	/* $usuario3=$_REQUEST['usuario3'];  */
-	/* $actividad=$_REQUEST['actividad']; */
-	/* $buscar=$_REQUEST['buscar']; */
+	
 	
 ?>
 	<div class="titulomenu">Material > </div><div class="imagentitulo"></div> 
@@ -31,12 +29,14 @@ else
 			or die ("No se puede seleccionar la base de datos");
 									
 		$usuario2=$_SESSION['usuario'];
-		/* $imgagen2=$nombreFichero; */
+		
 								
 		//Empezamos la paginación.
 		$num=4;
 								
-		$comienzo=$_REQUEST['comienzo'];
+				if(isset($_REQUEST['comienzo'])){				
+ 	$comienzo=$_REQUEST['comienzo']; 
+            }
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
@@ -137,12 +137,6 @@ else
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion;
-				//$_SESSION['consulta2']=$usuario;
-				$_SESSION['pag']="material";
-				?>
-				
-				<?PHP
 				
 		}
       	else

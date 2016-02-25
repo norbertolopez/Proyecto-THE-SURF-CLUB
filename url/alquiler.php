@@ -13,22 +13,7 @@ else
 {
 	include("../lib/fecha.php");
 	$usuario=$_SESSION['usuario'];
-	/* $usuario3=$_REQUEST['usuario3']; */
-	/* $actividad=$_REQUEST['actividad']; */
-	/* $buscar=$_REQUEST['buscar']; */
-	$error="";
-	if (isset($buscar))
-   	{
-		if ((!preg_match("/[0-9]{1,2}\/[0-9]{1,2}\/([0-9][0-9]){1,2}/",$usuario3)) && $usuario3!="")
-		{
-			$error["usuario3"]="Fecha introducida incorrecta";
-		}
-		
-		if ((!preg_match("/[0-9]{1,2}\/[0-9]{1,2}\/([0-9][0-9]){1,2}/",$actividad)) && $actividad!="")
-		{
-			$error["actividad"]="Fecha introducida incorrecta";
-		}
-	}
+	
 	
 ?>
 	<div class="titulomenu">Alquiler > </div><div class="imagentitulo"></div> 
@@ -51,13 +36,14 @@ else
 		//Empezamos la paginación.
 		$num=4;
 								
-		$comienzo=$_REQUEST['comienzo'];
+					if(isset($_REQUEST['comienzo'])){				
+ 	$comienzo=$_REQUEST['comienzo']; 
+            }
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
 		//Para la paginación vamos a realizar dos consultas, una para ver el total y otra para limitarlas.
-		/* $usuario4=cambiaf_a_mysql($usuario3); */
-		/* $actividad2=cambiaf_a_mysql($actividad); */
+		
 		//Comprobamos si se le ha dado a buscar
 		if (isset($buscar) && $error=="")
 		{
@@ -143,7 +129,7 @@ else
 			print ("<TH>Nombre Cliente</TH>\n");
 			print ("<TH>Fecha Fin</TH>\n");
 			if (isset($buscar) && ($usuario3!="" || $actividad!=""))
-				print ("<TH>Ingresos</TH>\n");
+				
          	print ("</TR>\n");
 			
 			
@@ -159,13 +145,13 @@ else
 					//Si se le ha dado a buscar y en la busqueda a introducido una actividad.
 					if($usuario3=="" && $actividad!="")
 					{
-						$instruccionp = "select nombre_material, modelo_material, tipo_material, sum(costo_alquiler) from material,alquiler  where material.id_material='$idal' GROUP BY modelo_material";
+						$instruccionp = "select nombre_material, modelo_material, tipo_material from material,alquiler  where material.id_material='$idal' GROUP BY modelo_material";
 					}
 											
 					//Si se le ha dado a buscar y en la busqueda a introducido un usuario.
 					if($usuario3!="" && $actividad=="")
 					{
-						$instruccionp = "select nombre_material, modelo_material, tipo_material, sum(costo_alquiler) from material,alquiler  where material.id_material='$idal' GROUP BY tipo_material";
+						$instruccionp = "select nombre_material, modelo_material, tipo_material, from material,alquiler  where material.id_material='$idal' GROUP BY tipo_material";
 					}
 											
 					//Si se le ha dado a buscar y en la busqueda a introducido un usuario y teléfono.
@@ -199,18 +185,11 @@ else
            		print ("<TD>" . $resultadop['nombre_material'] . "</TD>\n");
             	print ("<TD>" . $resultadop2['nombre_cliente'] . "</TD>\n");
 				print ("<TD> $diafa </TD>\n");
-				if (isset($buscar) && ($usuario3!="" || $actividad!=""))
-					print ("<TD>" . $resultadop['sum(costo_alquiler)'] . "</TD>\n");
-            	print ("</TR>\n");
+				
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion;
-				$_SESSION['consulta2']=$instruccionp;
-				$_SESSION['pag']="alquiler";
-				?>
-				
-				<?PHP
+			
 		}
       	else
          	print ("No hay Alquiler, con las caracteristicas introducidas");

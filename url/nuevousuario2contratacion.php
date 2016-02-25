@@ -12,18 +12,7 @@ else
 {
 				include("../lib/fecha.php");
 				$error="";
-				$usuariol=$_REQUEST['usuariol'];
-				$nombrem=$_REQUEST['nombrem'];
-				$contraseñal=$_REQUEST['contraseñal'];
-				$nombrel=$_REQUEST['nombrel'];
-				$apellidol=$_REQUEST['apellidol'];
-				$direcionl=$_REQUEST['direcionl'];
-				$dnil=$_REQUEST['dnil'];
-				$direcionl=$_REQUEST['direcionl'];
-				$telefonol=$_REQUEST['telefonol'];
-				$emaill=$_REQUEST['emaill'];
-				$enviarl=$_REQUEST['enviarl'];
-				$borrarl=$_REQUEST['borrarl'];
+	
 				$err=false;
 				
 				// Subir fichero
@@ -104,7 +93,7 @@ else
      			
    				}
       			
-      			if(isset($enviarl) && $error=="")
+      			if(isset($_REQUEST['enviarl']) && $error=="")
    				{ 
    						// Conectar con el servidor de base de datos
       					$conexion = mysql_connect ("localhost", "root", "")
@@ -114,15 +103,15 @@ else
      					mysql_select_db ("thesurfclub")
          					or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
-						$emaill=cambiaf_a_mysql($emaill);
-						$telefonol=cambiaf_a_mysql($telefonol);
+						$_REQUEST['emaill']=cambiaf_a_mysql($_REQUEST['emaill']);
+						$_REQUEST['telefonol']=cambiaf_a_mysql($_REQUEST['telefonol']);
    						// Enviar consulta para insertar contacto en la agenda.
-						$instruccion = "insert into contrato (duracion_contrato,fecha_inicio_contrato,fecha_fin_contrato,costo_contrato,id_monitor) values ('$dnil','$telefonol','$emaill','$direcionl','$idcliente')";
+						$instruccion = "insert into contrato (duracion_contrato,fecha_inicio_contrato,fecha_fin_contrato,costo_contrato,id_monitor) values ('".$_REQUEST['dnil']."','".$_REQUEST['telefonol']."','".$_REQUEST['emaill']."','".$_REQUEST['direcionl']."','".$_REQUEST['nombrem']."')";
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consultass32alquiler");        					
          				mysql_close ($conexion);
-						$emaill=cambiaf_a_normal($emaill);
-						$telefonol=cambiaf_a_normal($telefonol);
+						$_REQUEST['emaill']=cambiaf_a_normal($_REQUEST['emaill']);
+						$$_REQUEST['telefonol']=cambiaf_a_normal($_REQUEST['telefonol']);
          			?>
    					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente un nuevo Contrato!</div>
    					<div class="cuerpomenu">
@@ -133,23 +122,23 @@ else
    						</tr>
    						<tr>
    							<td>ID Monitor:</td>
-   							<td><?php print("$nombrem")?></td>
+   							<td><?php print($_REQUEST['nombrem'])?></td>
    						</tr>
    						<tr>
    							<td>Duracion:</td>
-   							<td><?php print("$dnil")?></td>
+   							<td><?php print($_REQUEST['dnil'])?></td>
    						</tr>
    						<tr>
    							<td>Fecha Inicio:</td>
-   							<td><?php print("$telefonol")?></td>
+   							<td><?php print($_REQUEST['telefonol'])?></td>
    						</tr>
    						<tr>
    							<td>Fecha Fin:</td>
-   							<td><?php print("$emaill")?></td>
+   							<td><?php print($_REQUEST['emaill'])?></td>
    						</tr>
    						<tr>
    							<td>Costo:</td>
-   							<td><?php print("$direcionl")?></td>
+   							<td><?php print($_REQUEST['direcionl'])?></td>
    						</tr>
    					</table>
    					<br/>
@@ -167,33 +156,49 @@ else
 						<br/>
 						<fieldset class="formulariol">
 								Duración *:<input type="text"  name="dnil"></input>
-								<?php if ($error[dnil]!="")
-									print("<span class='error'>$error[dnil]</span>");
+								<?php
+                    if (isset($error['dnil'])) {
+                    if ($error['dnil']!="")
+									print("<span class='error'>".$error['dnil']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 
 								Fecha Inicio *:<input type="text"  name="telefonol"></input>
-								<?php if ($error[telefonol]!="")
-									print("<span class='error'>$error[telefonol]</span>");
+								<?php
+                    if (isset($error['telefonol'])) {
+                    if ($error['telefonol']!="")
+									print("<span class='error'>".$error['telefonol']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Fecha Fin *:<input type="text"  name="emaill"></input>
-								<?php if ($error[emaill]!="")
-									print("<span class='error'>$error[emaill]</span>");
+								<?php
+                    if (isset($error['emaill'])) {
+                    if ($error['emaill']!="")
+									print("<span class='error'>".$error['emaill']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>
 								Costo *:<input type="text"  name="direcionl"></input>
-								<?php if ($error[direcionl]!="")
-									print("<span class='error'>$error[direcionl]</span>");
+								<?php
+                    if (isset($error['direcionl'])) {
+                    if ($error['direcionl']!="")
+									print("<span class='error'>".$error['direcionl']."</span>");
+                    }
+            
 								?>
 							<br/>
 							<br/>
 								ID Monitor *:<input type="text"  name="nombrem"></input>
-								<?php if ($error[nombrem]!="")
-									print("<span class='error'>$error[nombrem]</span>");
+								<?php
+                    if (isset($error['nombrem'])) {
+                    if ($error['nombrem']!="")
+									print("<span class='error'>".$error['nombrem']."</span>");
+                    }
 								?>
 							<br/>
 							<br/>

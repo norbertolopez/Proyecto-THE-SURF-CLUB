@@ -14,29 +14,13 @@ else
    
 	$usuario=$_SESSION['usuario'];
 
-//* $usuario3=$_REQUEST['usuario3'];
-//*	$actividad=$_REQUEST['actividad'];
-//*	$buscar=$_REQUEST['buscar'];
+
 	
 ?>
 	<div class="titulomenu">Monitores > </div><div class="imagentitulo"></div> 
 	<div class="cuerpomenu">
 		<form action="nuevousuario2monitores.php" METHOD="POST">Listado de Monitores de The Surf Club <span style="text-align:right;"><input type="submit" value="Añadir Monitor"></span></form>
-		<form ACTION="monitores.php" METHOD="POST">
-		<fieldset class="formulariol">
-		<table>
-			<tr>
-				<td>Nombre: </td><td><input type="text" name="usuario3" size=16></td>
-			</tr>
-			<tr>
-				<td>Cursos/Material:</td> <td><input type="text" name="actividad" size=16></td>
-			</tr>
-			<tr>	
-				<td><input type=submit value="Buscar" name="buscar"></td>
-			</tr>
-		</table>
-		</fieldset>
-		</form>
+		
 							
 <?php 
 		// Conectar con el servidor de base de datos.
@@ -52,8 +36,9 @@ else
 								
 		//Empezamos la paginación.
 		$num=4;
-								
+			if(isset($_REQUEST['comienzo'])){				
  	$comienzo=$_REQUEST['comienzo']; 
+            }
 	if(!isset($comienzo))  
 			$comienzo=0;
 									
@@ -165,12 +150,7 @@ else
         	}
 
          		print ("</TABLE></center>\n");
-				$_SESSION['consulta1']=$instruccion2;
-				//$_SESSION['consulta2']=$usuario;
-				$_SESSION['pag']="monitores";
-				?>
 				
-				<?PHP
 				
 		}
       	else

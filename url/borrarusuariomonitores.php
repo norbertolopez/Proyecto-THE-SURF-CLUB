@@ -22,7 +22,9 @@ if (!isset($_SESSION['usuario']))
          	or die ("No se puede seleccionar la base de datos");
 							
 		$usuario2=$_SESSION['usuario'];
+        if (isset($nombreFichero)){
 		$imgagen2=$nombreFichero;
+            }
 						
    		// Enviar consulta que nos saque toda la información de la tabla agenda del usuario logueado 
 		//cuyo id sea al id pasado por url

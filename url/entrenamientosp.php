@@ -3,7 +3,7 @@
 session_start();
 	include('databaseConnection.php');
 	
-	/* $action = $_POST['action']; */
+	
 	
 
 </script>
