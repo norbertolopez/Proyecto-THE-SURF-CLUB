@@ -3,6 +3,9 @@
 session_start();
 
 include("encabezado.php");
+
+include_once("db_configuration.php");
+
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 if (!isset($_SESSION['usuario']))
 	{
