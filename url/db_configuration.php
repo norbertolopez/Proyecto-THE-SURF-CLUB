@@ -6,9 +6,9 @@
     $db_password=$_ENV['hQrsxQX2NDcE']; //Openshift db password OPENSHIFT_MYSQL_DB_PASSWORD
     $db_name="thesurfclub"; //Openshift db name
   } else {
-    $db_user="adminWgsz3Nn"; //my db user
-    $db_host="127.9.100.2"; //my db host
-    $db_password="hQrsxQX2NDcE"; //my db password
+    $db_user="root"; //my db user
+    $db_host="localhost"; //my db host
+    $db_password=""; //my db password
     $db_name="thesurfclub"; //my db name
   }
 ?>
