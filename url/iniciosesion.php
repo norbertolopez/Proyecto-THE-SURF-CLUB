@@ -3,7 +3,7 @@
 session_start();
 include("encabezado.php");
 
-include("db_configuration.php");
+include_once("db_configuration.php");
 
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
@@ -31,7 +31,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
         			
         			$nfilas = mysql_num_rows ($consulta);
         		
-					//Comprovamos que la consulta tiene almenos una fila, y en caso afirmativo, metemos al usuario en sesión.
+					//Comprobamos que la consulta tiene almenos una fila, y en caso afirmativo, metemos al usuario en sesión.
         			if ($nfilas > 0)
         			{
         				$_SESSION['usuario']=$_REQUEST['usuariol'];
