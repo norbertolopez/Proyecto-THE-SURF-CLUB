@@ -122,8 +122,7 @@ else
      					mysql_select_db ($db_name)
          					or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
-				//		$emaill=cambiaf_a_mysql($emaill);
-				//		$telefonol=cambiaf_a_mysql($telefonol);
+				
    						// Enviar consulta para insertar contacto en la agenda.
 						$instruccion = "insert into alquiler (duracion_alquiler,fecha_inicio_alquiler,fecha_fin_alquiler,costo_alquiler,id_cliente,id_material) values ('".$_REQUEST['dnil']."','".$_REQUEST['telefonol']."','".$_REQUEST['emaill']."','".$_REQUEST['direcionl']."','".$_REQUEST['nombrem']."','".$_REQUEST['apellidol']."')";
 						$consulta = mysql_query ($instruccion, $conexion)

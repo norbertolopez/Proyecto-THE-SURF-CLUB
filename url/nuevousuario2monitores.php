@@ -162,12 +162,12 @@ else
       			if(isset($_REQUEST['enviarl']) && $error=="")
    				{ 
    						// Conectar con el servidor de base de datos
-      					$conexion = mysql_connect ("localhost", "root", "")
-        					 or die ("No se puede conectar con el servidor");
+      			//		$conexion = mysql_connect ($db_host, $db_user, $db_password)
+        		//			 or die ("No se puede conectar con el servidor");
 
    						// Seleccionar base de datos
-     					mysql_select_db ("thesurfclub")
-         					or die ("No se puede seleccionar la base de datos");
+     			//		mysql_select_db ($db_name)
+         		//			or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
    						// Enviar consulta para insertar contacto en la agenda.
 						$instruccion = "insert into monitores (dni_monitor,nombre_monitor,apellidos_monitor,email_monitor,telefono_monitor,direccion_monitor,actividad_monitor,foto_monitor) values ('".$_REQUEST['dnil']."','".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."','".$_REQUEST['emaill']."','".$_REQUEST['telefonol']."','".$_REQUEST['direcionl']."','".$_REQUEST['actividadl']."','".$nombreFichero."')" ;
