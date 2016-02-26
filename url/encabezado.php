@@ -2,6 +2,7 @@
 
 /* session_start(); 
 include('databaseConnection.php'); */
+include_once("db_configuration.php");
 ?>
 <html LANG="es">
 	<head>
@@ -87,11 +88,11 @@ include('databaseConnection.php'); */
 							
 							<?php
 							// Conectar con el servidor de base de datos.
-							$conexion = mysql_connect ("localhost", "root", "")
+							$conexion = mysql_connect ($db_host, $db_user, $db_password)
 								 or die ("No se puede conectar con el servidor");
 
 							// Seleccionar base de datos.
-							mysql_select_db ("thesurfclub")
+							mysql_select_db ($db_name)
 								or die ("No se puede seleccionar la base de datos");
 
 							//Encriptamos la contraseña.

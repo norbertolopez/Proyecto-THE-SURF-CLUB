@@ -3,6 +3,7 @@
 session_start();
 include("encabezado.php");
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
+include_once("db_configuration.php");
 
 if (!isset($_SESSION['usuario']))
 {
@@ -23,11 +24,11 @@ else
 							
 <?php 
 		// Conectar con el servidor de base de datos.
-		$conexion = mysql_connect ("localhost", "root", "")
+		$conexion = mysql_connect ($db_host, $db_user, $db_password)
 			or die ("No se puede conectar con el servidor");
 
 		// Seleccionar base de datos.
-			mysql_select_db ("thesurfclub")
+			mysql_select_db ($db_name)
 			or die ("No se puede seleccionar la base de datos");
 									
 		$usuario2=$_SESSION['usuario'];
