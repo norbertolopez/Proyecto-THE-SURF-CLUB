@@ -17,7 +17,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
         				 or die ("No se puede conectar con el servidor");
 
    					// Seleccionar base de datos.
-     				mysql_select_db ($db_name);
+     				mysql_select_db ($db_name)
          				or die ("No se puede seleccionar la base de datos");
 
    					//Encriptamos la contraseña.
