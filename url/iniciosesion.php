@@ -13,7 +13,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 				if (isset ($_REQUEST['usuariol']) && isset ($_REQUEST['contrasenal']))
 				{
 					// Conectar con el servidor de base de datos.
-      				$conexion = mysql_connect ($db_host, $db_user)
+      				$conexion = mysql_connect ($db_user, $db_host,)
         				 or die ("No se puede conectar con el servidor");
 
    					// Seleccionar base de datos.
