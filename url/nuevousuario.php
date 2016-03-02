@@ -3,7 +3,7 @@
  include_once("db_configuration.php");
 
 session_start();
-if (!isset($_SESSION['usuario'])) {
+if (!isset($_SESSION['admin'])) {
 
 header("Location: ./iniciosesion.php");
 
