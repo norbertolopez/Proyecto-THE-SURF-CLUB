@@ -3,7 +3,6 @@
 session_start();
 include("encabezado.php");
 include_once("db_configuration.php");
-
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 if (!isset($_SESSION['usuario']))
@@ -19,6 +18,7 @@ else
 ?>
 	<div class="titulomenu">Playas > 
         <h6>Aqui encontraras el listado de nuestras playas donde haremos la practica de las distintas</h6>
+        <form action="nuevousuario2playas.php" METHOD="POST">Listado de playas de The Surf Club <span style="text-align:right;"><input type="submit" value="Añadir Playa"></span></form>
 
 </div><div class="imagentitulo"></div> 
 	<div class="cuerpomenu">
@@ -33,11 +33,11 @@ else
 			if(!isset($comienzo)) 
 				$comienzo=0;
 			
-			$conexion = mysql_connect ($db_host, $db_user, $db_password)
+			$conexion = mysql_connect ("localhost", "root", "")
 				or die ("No se puede conectar con el servidor");
 
 			// Seleccionar base de datos.
-			mysql_select_db ($db_name)
+			mysql_select_db ("thesurfclub")
 				or die ("No se puede seleccionar la base de datos");
 				
 			//Si no se ha pulsado buscar.
@@ -88,6 +88,9 @@ else
          	print ("<TH>Nombre</TH>\n");
 			print ("<TH>Longitud</TH>\n");
 			print ("<TH>Número de Cursos</TH>\n");
+            print ("<TH>Ver Detalles</TH>\n");
+			print ("<TH>Actualizar</TH>\n");
+         	print ("<TH>Borrar</TH>\n");
          	print ("</TR>\n");
 
         	for ($i=0; $i<$nfilas; $i++)
@@ -106,6 +109,9 @@ else
            		print ("<TD>" . $resultado['nombre_playa'] . "</TD>\n");
             	print ("<TD>" . $resultado['longitud_playa'] . "</TD>\n");
 				print ("<TD> $diafa </TD>\n");
+                print ("<TD><a href='verdetallesplayas.php?id=" . $resultado['id_playa'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+				print ("<TD><a href='actualizarplaya.php?id=" . $resultado['id_playa'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+           		print ("<TD><a href='borrarplaya.php?id=" . $resultado['id_playa'] . "'><center><img src='../img/iconoborrar.jpg' border='0'></img></center></a></TD>\n");
             	print ("</TR>\n");
         	}
 
