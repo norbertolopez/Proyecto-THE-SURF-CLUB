@@ -125,6 +125,9 @@ else
          	print ("<TH>Nombre</TH>\n");
 			print ("<TH>Modelo</TH>\n");
 			print ("<TH>Tipo</TH>\n");
+            print ("<TH>Ver Detalles</TH>\n");
+			print ("<TH>Actualizar</TH>\n");
+         	print ("<TH>Borrar</TH>\n");
          	print ("</TR>\n");
 
         	for ($i=0; $i<$nfilas; $i++)
@@ -134,6 +137,9 @@ else
            		print ("<TD>" . $resultado['nombre_material'] . "</TD>\n");
             	print ("<TD>" . $resultado['modelo_material'] . "</TD>\n");
 				print ("<TD>" . $resultado['tipo_material'] . "</TD>\n");
+                print ("<TD><a href='verdetallesmaterial.php?id=" . $resultado['id_material'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+				print ("<TD><a href='actualizarmaterial.php?id=" . $resultado['id_material'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+           		print ("<TD><a href='borrarmaterial.php?id=" . $resultado['id_material'] . "'><center><img src='../img/iconoborrar.jpg' border='0'></img></center></a></TD>\n");
             	print ("</TR>\n");
         	}
 

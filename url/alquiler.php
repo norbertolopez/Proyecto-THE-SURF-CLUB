@@ -2,8 +2,8 @@
 
 session_start();
 include("encabezado.php");
-print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 include_once("db_configuration.php");
+print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 if (!isset($_SESSION['usuario']))
 {
@@ -129,6 +129,9 @@ else
          	print ("<TH>Nombre Material</TH>\n");
 			print ("<TH>Nombre Cliente</TH>\n");
 			print ("<TH>Fecha Fin</TH>\n");
+            print ("<TH>Ver Detalles</TH>\n");
+			print ("<TH>Actualizar</TH>\n");
+         	print ("<TH>Borrar</TH>\n");
 			if (isset($buscar) && ($usuario3!="" || $actividad!=""))
 				
          	print ("</TR>\n");
@@ -186,6 +189,9 @@ else
            		print ("<TD>" . $resultadop['nombre_material'] . "</TD>\n");
             	print ("<TD>" . $resultadop2['nombre_cliente'] . "</TD>\n");
 				print ("<TD> $diafa </TD>\n");
+                   print ("<TD><a href='verdetallesalquiler.php?id=" . $resultado['id_alquiler'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+				print ("<TD><a href='actualizaralquiler.php?id=" . $resultado['id_alquiler'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+           		print ("<TD><a href='borraralquiler.php?id=" . $resultado['id_alquiler'] . "'><center><img src='../img/iconoborrar.jpg' border='0'></img></center></a></TD>\n");
 				
         	}
 

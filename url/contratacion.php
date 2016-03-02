@@ -113,6 +113,9 @@ else
          	print ("<TH>Nombre Monitor</TH>\n");
 			print ("<TH>Duración de Contrato</TH>\n");
 			print ("<TH>Fecha Fin</TH>\n");
+             print ("<TH>Ver Detalles</TH>\n");
+			print ("<TH>Actualizar</TH>\n");
+         	print ("<TH>Borrar</TH>\n");
          	print ("</TR>\n");
 			
 			
@@ -131,6 +134,10 @@ else
            		print ("<TD>" . $resultadop['nombre_monitor'] . "</TD>\n");
 				print ("<TD>" . $resultado['duracion_contrato'] . " horas</TD>\n");
 				print ("<TD> $diafa </TD>\n");
+                print ("<TD><a href='verdetallescontrato.php?id=" . $resultado['id_contrato'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+				print ("<TD><a href='actualizarcontrato.php?id=" . $resultado['id_contrato'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+           		print ("<TD><a href='borrarcontrato.php?id=" . $resultado['id_contrato'] . "'><center><img src='../img/iconoborrar.jpg' border='0'></img></center></a></TD>\n");
+            	print ("</TR>\n");
             	print ("</TR>\n");
         	}
 
