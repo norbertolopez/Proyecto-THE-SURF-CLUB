@@ -188,7 +188,7 @@ else
                             
 								Nombre del monitor *:<?php
                     echo "<select name='dnil' required'>";
-                    $connectionz = new mysqli("localhost", "root", "", "thesurfclub");
+                    $connectionz = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($result3=$connectionz->query("SELECT * FROM monitores;")) {
      if ($result3->num_rows===0) {
                 echo "ERROR FATAL, ABORTAR MISIÓN";
