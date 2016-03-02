@@ -1,8 +1,7 @@
 <?php
-
-/* session_start(); 
-include('databaseConnection.php'); */
 include_once("db_configuration.php");
+//session_start(); 
+//include('databaseConnection.php');
 ?>
 <html LANG="es">
 	<head>

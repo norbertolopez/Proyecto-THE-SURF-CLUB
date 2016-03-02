@@ -13,8 +13,7 @@ else
 {
 				include("../lib/fecha.php");
 				$error="";
-				
-
+		
 				$err=false;
 				
 				// Subir fichero
@@ -42,18 +41,6 @@ else
      					$err=true;
      				}
 					
-					if (trim($cursol)=="")
-     				{
-     					$error["cursol"]="Campo marcado (*) requerido";
-     					$err=true;
-     				}
-					
-     				if (!preg_match('/^[0-9]{8}[a-z,A-Z]{1}$/',$dnil))
-					{
-						$error["dnil"]="DNI Incorrecto, 8digitos + 1 Letra";
-						$err=TRUE;
-					}
-				   
      				if ($error=="")
      				{
      				// Conectar con el servidor de base de datos
@@ -67,7 +54,7 @@ else
 						
 						
    						// Enviar consulta para comprobar que no exista un usuario, con el mismo apellido y nombre que el que queremos introducir.
-						$instruccion3 = "select * from clientes where dni_cliente='$dnil'" ;
+						$instruccion3 = "select * from playas where nombre_playa='$nombrel'" ;
 						$consulta3 = mysql_query ($instruccion3, $conexion)
         					 or die ("Fallo en la consultahgfghfghfgh");
         					 
@@ -75,19 +62,7 @@ else
      				
 	        			if ($nfilas3!=0)
 	        			{
-	        				$error["dnil"]="Ya existe un Cliente, con ese DNI";
-	     					$err=true;
-	        			}
-						
-						$instruccion4 = "select * from cursos where id_curso='$cursol'" ;
-						$consulta4 = mysql_query ($instruccion4, $conexion)
-        					 or die ("Fallo en la consultahgfghfghfgh");
-        					 
-	   					$nfilas4 = mysql_num_rows ($consulta4);
-     				
-	        			if ($nfilas4==0)
-	        			{
-	        				$error["cursol"]="No existe ningun curso con ese id";
+	        				$error["nombrel"]="Ya existe una Playa, con ese Nombre";
 	     					$err=true;
 	        			}
 	        			
@@ -107,22 +82,14 @@ else
 						$usuario2=$_SESSION['usuario'];
 						
    						// Enviar consulta para insertar contacto en la agenda.
-						$instruccion = "insert into clientes (nombre_cliente,apellidos_cliente,dni_cliente) values ('".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."','".$_REQUEST['dnil']."')";
+						$instruccion = "insert into playas (nombre_playa,longitud_playa) values ('".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."')";
 						$consulta = mysql_query ($instruccion, $conexion)
-        					 or die ("Fallo en la consultass32a");  
-						$instruccion2="select id_cliente from clientes where dni_cliente='".$_REQUEST['dnil']."'";
-						$consulta2 = mysql_query ($instruccion2, $conexion)
-        					 or die ("Fallo en la consultass32b"); 
-						$resultado2=mysql_fetch_array($consulta2);
-						$cliente=$resultado2['id_cliente'];
-						$instruccion3="insert into clientecursos (id_curso,id_cliente) values ('".$_REQUEST['cursol']."','$cliente')";
-						$consulta3 = mysql_query ($instruccion3, $conexion)
-        					 or die ("Fallo en la consultass32c");
+        					 or die ("Fallo en la consultass32");        					
          				mysql_close ($conexion);
-				//		$emaill=cambiaf_a_normal($emaill);
-				//		$telefonol=cambiaf_a_normal($telefonol);
+					//	$emaill=cambiaf_a_normal($emaill);
+					//	$telefonol=cambiaf_a_normal($telefonol);
          			?>
-   					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente al Cliente   !</div>
+   					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente la playa!</div>
    					<div class="cuerpomenu">
    					<table  border="0">
    						<tr>
@@ -134,43 +101,36 @@ else
    							<td><?php print($_REQUEST['nombrel'])?></td>
    						</tr>
    						<tr>
-   							<td>Apellido:</td>
+   							<td>Longitud:</td>
    							<td><?php print($_REQUEST['apellidol'])?></td>
    						</tr>
-   						<tr>
-   							<td>DNI:</td>
-   							<td><?php print($_REQUEST['dnil'])?></td>
-   						</tr>
-						<tr>
-   							<td> ID Curso:</td>
-   							<td><?php print($_REQUEST['cursol'])?></td>
-   						</tr>
+   						
    					</table>
    					<br/>
    					</div>
-   					<div class="preguntalogin">Haz clik <a href="clientes.php">aquí</a> para volver a la agenda</div>
+   					<div class="preguntalogin">Haz clik <a href="playas.php">aquí</a> para volver a playas</div>
       				<?php
    				}
    				else
    				{
 			?>
       			
-						<div class="titulomenu">Agregar Clientes > </div><div class="imagentitulo"></div> 
+						<div class="titulomenu">Agregar Playa > </div><div class="imagentitulo"></div> 
 						<div class="cuerpomenu">
-						Cumplimenta este formulario para agregar a un Cliente
-							<form ACTION="nuevousuario2clientes.php" METHOD="POST">
+						Cumplimenta este formulario para agregar a una Playa
+							<form ACTION="nuevousuario2playas.php" METHOD="POST">
 						<br/>
 						<fieldset class="formulariol">
 								Nombre *:<input type="text"  name="nombrel"></input>
 								<?php
                     if (isset($error['nombrel'])) {
                     if ($error['nombrel']!="")
-									print("<span class='error'>".$error[nombrel]."</span>");
+									print("<span class='error'>".$error['nombrel']."</span>");
                     }
 								?>
 							<br/>
 							<br/>
-								Apellido *:<input type="text"  name="apellidol"></input>
+								Longitud *:<input type="text"  name="apellidol"></input>
 								<?php
                     if (isset($error['apellidol'])) {
                     if ($error['apellidol']!="")
@@ -178,42 +138,7 @@ else
                     }
 								?>
 							<br/>
-							<br/>
-								DNI *:<input type="text"  name="dnil"></input>
-								<?php
-                    if (isset($error['dnil'])) {
-                    if ($error['dnil']!="")
-									print("<span class='error'>".$error['dnil']."</span>");
-                    }
-								?>
-							<br/>
-							<br/>
-<?php
-                    echo "Curso* :<select name='cursol' required'>";
-                    $connectionz = new mysqli("localhost", "root", "", "thesurfclub");
-if ($result3=$connectionz->query("SELECT * FROM cursos;")) {
-     if ($result3->num_rows===0) {
-                echo "ERROR FATAL, ABORTAR MISIÓN";
-              } else {
-         while($obj2 = $result3->fetch_object()) {
-                    echo "<option value='".$obj2->id_curso."'>".$obj2->nombre_curso."</option>";
-                 }
-         $result3->close();
-         unset($obj2);
-    }
- }
-                    echo "Curso* :</select>";
-?>
-                    
-                    
-
-								
-								<?php
-                        if (isset($error['cursol'])) {
-                        if ($error['cursol']!="")
-									print("<span class='error'>".$error['cursol']."</span>");
-                        }
-								?>
+							
 							<br/>
 							<br/>
 											<p class="error">Los campos marcados con (*) son obligatorios</p>

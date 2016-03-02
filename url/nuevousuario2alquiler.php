@@ -122,13 +122,15 @@ else
      					mysql_select_db ($db_name)
          					or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
-				
+				//		$emaill=cambiaf_a_mysql($emaill);
+				//		$telefonol=cambiaf_a_mysql($telefonol);
    						// Enviar consulta para insertar contacto en la agenda.
 						$instruccion = "insert into alquiler (duracion_alquiler,fecha_inicio_alquiler,fecha_fin_alquiler,costo_alquiler,id_cliente,id_material) values ('".$_REQUEST['dnil']."','".$_REQUEST['telefonol']."','".$_REQUEST['emaill']."','".$_REQUEST['direcionl']."','".$_REQUEST['nombrem']."','".$_REQUEST['apellidol']."')";
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consultass32alquiler");        					
          				mysql_close ($conexion);
-					
+					//	$emaill=cambiaf_a_normal($emaill);
+					//	$telefonol=cambiaf_a_normal($telefonol);
          			?>
    					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente un nuevo Alquiler!</div>
    					<div class="cuerpomenu">
@@ -187,7 +189,7 @@ else
 							<br/>
 							<br/>
 
-								Fecha Inicio *:<input type="text"  name="telefonol"></input>
+								Fecha Inicio *:<input type="date"  name="telefonol"></input>
 								<?php
                      if (isset($error['telefonol'])) {
                     if ($error['telefonol']!="")
@@ -196,7 +198,7 @@ else
 								?>
 							<br/>
 							<br/>
-								Fecha Fin *:<input type="text"  name="emaill"></input>
+								Fecha Fin *:<input type="date"  name="emaill"></input>
 								<?php
                     if (isset($error['emaill'])) {
                     if ($error['emaill']!="")
@@ -214,22 +216,40 @@ else
 								?>
 							<br/>
 							<br/>
-							ID Cliente *:<input type="text"  name="nombrem"></input>
-								<?php
-                    if (isset($error['nombrem'])) {
-                    if ($error['nombrem']!="")
-									print("<span class='error'>".$error['nombrem']."</span>");
-                    }
-								?>
+							Nombre Cliente *:<?php
+                    echo " <select name='nombrem' required'>";
+                    $connectionz = new mysqli("localhost", "root", "", "thesurfclub");
+if ($result3=$connectionz->query("SELECT * FROM clientes;")) {
+     if ($result3->num_rows===0) {
+                echo "ERROR FATAL, ABORTAR MISIÓN";
+              } else {
+         while($obj2 = $result3->fetch_object()) {
+                    echo "<option value='".$obj2->id_cliente."'>".$obj2->nombre_cliente."</option>";
+                 }
+         $result3->close();
+         unset($obj2);
+    }
+ }
+                    echo " </select>";
+?>
 							<br/>
 							<br/>
-							ID Material *:<input type="text"  name="apellidol"></input>
-								<?php
-                    if (isset($error['apellidol'])) {
-                    if ($error['apellidol']!="")
-									print("<span class='error'>".$error['apellidol']."</span>");
-                    }
-								?>
+							 Material *:<?php
+                    echo "<select name='apellidol' required'>";
+                    $connectionz = new mysqli("localhost", "root", "", "thesurfclub");
+if ($result3=$connectionz->query("SELECT * FROM material;")) {
+     if ($result3->num_rows===0) {
+                echo "ERROR FATAL, ABORTAR MISIÓN";
+              } else {
+         while($obj2 = $result3->fetch_object()) {
+                    echo "<option value='".$obj2->id_material."'>".$obj2->nombre_material."</option>";
+                 }
+         $result3->close();
+         unset($obj2);
+    }
+ }
+                    echo "</select>";
+?>
 							<br/>
 							<br/>
 											<p class="error">Los campos marcados con (*) son obligatorios</p>

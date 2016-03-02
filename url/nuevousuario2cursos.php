@@ -35,6 +35,7 @@ else
      					$err=true;
      				}
      			   
+                
      			
 
 
@@ -51,7 +52,7 @@ else
 						
 						
    						// Enviar consulta para comprobar que no exista un usuario, con el mismo apellido y nombre que el que queremos introducir.
-						$instruccion3 = "select * from monitores where nombre_monitor='".$_REQUEST['nombrel']."' and apellidos_monitor='".$_REQUEST['apellidol']."'";
+						$instruccion3 = "select * from cursos where nombre_curso='".$_REQUEST['nombrel']."' and deporte='".$_REQUEST['apellidol']."'";
 						$consulta3 = mysql_query ($instruccion3, $conexion)
         					 or die ("Fallo en la consultahgfghfghfgh");
         					 
@@ -59,7 +60,7 @@ else
      				
 	        			if ($nfilas3!=0)
 	        			{
-	        				$error["nombrel"]="Ya existe un monitor, con ese Nombre y apellido";
+	        				$error["nombrel"]="Ya existe un curso, con ese Nombre";
 	     					$err=true;
 	        			}
 	        			
@@ -112,55 +113,7 @@ else
 						$err=TRUE;
 					}
 
-   					// Copiar fichero en directorio de ficheros subidos
-				  	// Se renombra para evitar que sobreescriba un fichero existente
-				   	// Para garantizar la unicidad del nombre se añade una marca de tiempo
-				      if (is_uploaded_file ($_FILES['imagenl']['tmp_name']))
-				      {
-				         $nombreDirectorio = "../img/";
-				         $nombreFichero = $_FILES['imagenl']['name'];
-				         $copiarFichero = true;
-				
-				      // Si ya existe un fichero con el mismo nombre, renombrarlo
-				         $nombreCompleto = $nombreDirectorio . $nombreFichero;
-				         if (is_file($nombreCompleto))
-				         {
-				            $idUnico = time();
-				            $nombreFichero = $idUnico . "-" . $nombreFichero;
-							$nombreFichero = ereg_replace (" ", "-", $nombreFichero);
-				         }
-				      }
-				   // El fichero introducido supera el límite de tamaño permitido
-				      else if ($_FILES['imagenl']['error'] == UPLOAD_ERR_FORM_SIZE)
-				      {
-				      	 $maxsize = $_REQUEST['MAX_FILE_SIZE'];
-				         $error["imagenl"] = "¡El tamaño del fichero supera el límite permitido ($maxsize bytes)!";
-				         $err = true;
-				      }
-				   // No se ha introducido ningún fichero
-				      else if ($_FILES['imagenl']['name'] == "")
-				         $nombreFichero = '';
-				   // El fichero introducido no se ha podido subir
-				      else
-				      {
-				         $error["imagenl"] = "¡No se ha podido subir el fichero!";
-				         $err = true;
-				      }
-						
-					if (trim($_FILES['imagenl']['name'])=="")
-					{
-						$error["imagenl"]="Campo marcado (*) requerido";
-						 $err = true;
-					}
-					else if($_FILES['imagenl']['type']!="image/jpeg" && $_FILES['imagenl']['type']!="image/jpg" && $_FILES['imagenl']['type']!="image/png" && $_FILES['imagenl']['type']!="image/JPEG" && $_FILES['imagenl']['type']!="image/jpg" && $_FILES['imagenl']['type']!="image/PNG" && !$err)
-						{
-							$error["imagenl"]="Extensión de fichero invalida, solo se permite archivos jpg, gif". $_FILES['imagenl']['name']. "muestra algo";
-							$err = true;
-						}
-   				}
-      			
-      			if(isset($_REQUEST['enviarl']) && $error=="")
-   				{ 
+   					
    						// Conectar con el servidor de base de datos
       					$conexion = mysql_connect ($db_host, $db_user, $db_password)
         					 or die ("No se puede conectar con el servidor");
@@ -170,14 +123,14 @@ else
          					or die ("No se puede seleccionar la base de datos");
 						$usuario2=$_SESSION['usuario'];
    						// Enviar consulta para insertar contacto en la agenda.
-						$instruccion = "insert into monitores (dni_monitor,nombre_monitor,apellidos_monitor,email_monitor,telefono_monitor,direccion_monitor,actividad_monitor,foto_monitor) values ('".$_REQUEST['dnil']."','".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."','".$_REQUEST['emaill']."','".$_REQUEST['telefonol']."','".$_REQUEST['direcionl']."','".$_REQUEST['actividadl']."','".$nombreFichero."')" ;
+						$instruccion = "insert into cursos (id_monitor,id_playa,nombre_curso,deporte,duracion_cursos,fecha_inicio_cursos,fecha_fin_curso,costo_curso) values ('".$_REQUEST['dnil']."','".$_REQUEST['nombrel']."','".$_REQUEST['apellidol']."','".$_REQUEST['emaill']."','".$_REQUEST['telefonol']."','".$_REQUEST['direcionl']."','".$_REQUEST['actividadl']."','".$_REQUEST['ultimol']."')" ;
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consultass");        					
          				mysql_close ($conexion);
          				if ($copiarFichero)
        						  move_uploaded_file ($_FILES['imagenl']['tmp_name'],$nombreDirectorio . $nombreFichero);	
    					?>
-   					<div class="titulomenu">¡El monitor ha ingresado satifactoriamente!</div>
+   					<div class="titulomenu">¡El curso ha ingresado satifactoriamente!</div>
    					<div class="cuerpomenu">
    					<table  border="0">
    						<tr>
@@ -185,72 +138,90 @@ else
    							<td style="font-weight:bold;">Información:</td>
    						</tr>
    						<tr>
-   							<td>Nombre:</td>
+   							<td>Nombre del Monitor:</td>
    							<td><?php print($_REQUEST['nombrel'])?></td>
    						</tr>
    						<tr>
-   							<td>Apellido:</td>
+   							<td>Playa Asignada:</td>
    							<td><?php print($_REQUEST['apellidol'])?></td>
    						</tr>
    						<tr>
-   							<td>DNI:</td>
+   							<td>Nombre del Curso:</td>
    							<td><?php print($_REQUEST['dnil'])?></td>
    						</tr>
    						<tr>
-   							<td>Direccion:</td>
+   							<td>Deporte:</td>
    							<td><?php print($_REQUEST['direcionl'])?></td>
    						</tr>
    						<tr>
-   							<td>Teléfono:</td>
+   							<td>Duracion del Curso:</td>
    							<td><?php print($_REQUEST['telefonol'])?></td>
    						</tr>
    						<tr>
-   							<td>Correo Electronico:</td>
+   							<td>Fecha Principio Curso:</td>
    							<td><?php print($_REQUEST['emaill'])?></td>
    						</tr>
 						<tr>
-   							<td>Actividad:</td>
+   							<td>Fecha Final Curso:</td>
    							<td><?php print($_REQUEST['actividadl'])?></td>
    						</tr>  						
    						<tr>
-   							<td>Imagen subida:</td>
-   							<td><?php print "<img src='../img/$nombreFichero' width='100px'></img>";?></td>
+   							<td>Costo del Curso:</td>
+   							<td><?php print ($_REQUEST['ultimol'])?></td>
    						</tr>
    					</table>
    					<br/>
    					</div>
-   					<div class="preguntalogin">Haz clik <a href="monitores.php">aquí</a> para volver a la agenda</div>
+   					<div class="preguntalogin">Haz clik <a href="cursos.php">aquí</a> para volver a la agenda</div>
       				<?php
    				}
    				else
    				{
 			?>
       			
-						<div class="titulomenu">Agregar Monitor > </div><div class="imagentitulo"></div> 
+						<div class="titulomenu">Agregar Curso > </div><div class="imagentitulo"></div> 
 						<div class="cuerpomenu">
-						Cumplimenta este formulario para agregar a un Monitor
-							<form ACTION="nuevousuario2monitores.php" METHOD="POST" ENCTYPE="multipart/form-data">
+						Cumplimenta este formulario para agregar un cursoi
+							<form ACTION="nuevousuario2cursos.php" METHOD="POST" ENCTYPE="multipart/form-data">
 						<br/>
 						<fieldset class="formulariol">
-								Nombre *:<input type="text"  name="nombrel"></input>
-								<?php 
-                            if (isset($error['nombrel'])) {
-                                if ($error['nombrel']!="")
-									print("<span class='error'>".$error['nombrel']."</span>");
-                                }
-								?>
+                            
+								Nombre del monitor *:<?php
+                    echo "<select name='dnil' required'>";
+                    $connectionz = new mysqli("localhost", "root", "", "thesurfclub");
+if ($result3=$connectionz->query("SELECT * FROM monitores;")) {
+     if ($result3->num_rows===0) {
+                echo "ERROR FATAL, ABORTAR MISIÓN";
+              } else {
+         while($obj2 = $result3->fetch_object()) {
+                    echo "<option value='".$obj2->id_monitor."'>".$obj2->nombre_monitor."</option>";
+                 }
+         $result3->close();
+         unset($obj2);
+    }
+ }
+                    echo "Curso* :</select>";
+?>
 							<br/>
 							<br/>
-								Apellido *:<input type="text"  name="apellidol"></input>
-								<?php 
-                    if (isset($error['apellidol'])) {
-                    if ($error['apellidol']!="")
-									print("<span class='error'>".$error['apellidol']."</span>");
-                    }
-								?>
+								Nombre Playa *:<?php
+                    echo "<select name='nombrel' required'>";
+if ($result3=$connectionz->query("SELECT * FROM playas;")) {
+     if ($result3->num_rows===0) {
+                echo "ERROR FATAL, ABORTAR MISIÓN";
+              } else {
+         while($obj2 = $result3->fetch_object()) {
+                    echo "<option value='".$obj2->id_playa."'>".$obj2->nombre_playa."</option>";
+                 }
+         $result3->close();
+         unset($obj2);
+    }
+ }
+                    echo "Curso* :</select>";
+?>
 							<br/>
 							<br/>
-								DNI *:<input type="text"  name="dnil"></input>
+								Nombre del Curso *:<input type="text"  name="apellidol" required></input>
 								<?php 
                     if (isset($error['dnil'])) {
                             if ($error['dnil']!="")
@@ -260,7 +231,7 @@ else
 							<br/>
 							<br/>
 
-								Teléfono *:<input type="text"  name="telefonol"></input>
+								Deporte *:<input type="text"  name="emaill" required></input>
 								<?php 
                     if (isset($error['telefonol'])) {
                             if ($error['telefonol']!="")
@@ -269,7 +240,7 @@ else
 								?>
 							<br/>
 							<br/>
-								Correo Electrónico *:<input type="text"  name="emaill"></input>
+								Duracion del curso *:<input type="text"  name="telefonol" required></input>
 								<?php 
                             if (isset($error['emaill'])) {
                             if ($error['emaill']!="")
@@ -278,7 +249,7 @@ else
 								?>
 							<br/>
 							<br/>
-								Dirección *:<input type="text"  name="direcionl"></input>
+								Fecha inicio *:<input type="date"  name="direcionl" required></input>
 								<?php 
                                     if (isset($error['direcionl'])) {
                                     if ($error['direcionl']!="")
@@ -287,7 +258,7 @@ else
 								?>
 							<br/>
 							<br/>
-								Actividad *:<input type="text"  name="actividadl"></input>
+								Fecha fin *:<input type="date"  name="actividadl" required></input>
 								<?php 
                                     if (isset($error['actividadl'])) {
                                     if ($error['actividadl']!="")
@@ -297,9 +268,8 @@ else
 							<br/>
 
 							<br/>
-								Imagen  *:
-								<INPUT TYPE="HIDDEN" NAME="MAX_FILE_SIZE" VALUE="10002400">					
-								<input type="file" name="imagenl" value="examinar"></input>
+								Costo del Curso  *:				
+								<input type="number" name="ultimol" required></input>
 								<?php 
                                 if (isset($error['imagenl'])) {
                                 if ($error['imagenl']!="")

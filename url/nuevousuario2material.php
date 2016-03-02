@@ -86,7 +86,8 @@ else
 						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consultass32");        					
          				mysql_close ($conexion);
-					
+					//	$emaill=cambiaf_a_normal($emaill);
+					//	$telefonol=cambiaf_a_normal($telefonol);
          			?>
    					<div class="titulomenu">¡Enorabuena ha ingresado satifactoriamente el Material Deseado!</div>
    					<div class="cuerpomenu">

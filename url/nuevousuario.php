@@ -1,8 +1,15 @@
 <?php
 
+ include_once("db_configuration.php");
+
 session_start();
+if (!isset($_SESSION['usuario'])) {
+
+header("Location: ./iniciosesion.php");
+
+ }
 include("encabezado.php");
-include_once("db_configuration.php");
+
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 				//Rescato datos del formulario.
@@ -59,7 +66,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
       			if(isset($_REQUEST['enviarl']) && $err==FALSE)
    				{
    						// Conectar con el servidor de base de datos
-      					$conexion2 = mysql_connect ($db_host, $db_user, $db_password)
+      					$conexion = mysql_connect ($db_host, $db_user, $db_password)
         					 or die ("No se puede conectar con el servidor");
 
    						// Seleccionar base de datos
@@ -71,12 +78,12 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 						$clave2=crypt ($_REQUEST['contraseñal'], $salt);
 						
 						$instruccion = "insert into usuarios (usuario,clave,tipo) values ('".$_REQUEST['usuariol']."','$clave2','gestor')";
-						$consulta = mysql_query ($instruccion, $conexion2)
+						$consulta = mysql_query ($instruccion, $conexion)
         					 or die ("Fallo en la consulta333");
    												
 						
         				
-         				mysql_close ($conexion2);	
+         				mysql_close ($conexion);	
 					?>  		
 					
 					<div class="titulomenu">Comprobando usuario > </div><div class="imagentitulo"></div> 
