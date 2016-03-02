@@ -194,15 +194,22 @@ else
 								?>
 							<br/>
 							<br/>
-								ID Monitor *:<input type="text"  name="nombrem"></input>
-								<?php
-                    if (isset($error['nombrem'])) {
-                    if ($error['nombrem']!="")
-									print("<span class='error'>".$error['nombrem']."</span>");
-                    }
-								?>
-							<br/>
-							<br/>
+						<?php
+                    echo "Monitor* :<select name='nombrem' required'>";
+                    $connectionz = new mysqli($db_host, $db_user, $db_password, $db_name);
+if ($result3=$connectionz->query("SELECT * FROM monitores;")) {
+     if ($result3->num_rows===0) {
+                echo "ERROR FATAL, ABORTAR MISIÓN";
+              } else {
+         while($obj2 = $result3->fetch_object()) {
+                    echo "<option value='".$obj2->id_monitor."'>".$obj2->nombre_monitor."</option>";
+                 }
+         $result3->close();
+         unset($obj2);
+    }
+ }
+                    
+?>
 											<p class="error">Los campos marcados con (*) son obligatorios</p>
 							<center>
 								<input type="submit" name="enviarl" value="Enviar">
