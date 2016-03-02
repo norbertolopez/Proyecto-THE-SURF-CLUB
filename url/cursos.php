@@ -20,6 +20,7 @@ else
 ?>
 	<div class="titulomenu">Cursos > 
 <h6> Listado de Cursos de The Surf Club </h6>
+        <form action="nuevousuario2cursos.php" METHOD="POST">Listado de cursos de The Surf Club <span style="text-align:right;"><input type="submit" value="Añadir Curso"></span></form>
 </div><div class="imagentitulo"></div> 
 	<div class="cuerpomenu">
         
@@ -118,6 +119,9 @@ else
 			print ("<TH>Deporte</TH>\n");
 			print ("<TH>Duración de Cursos</TH>\n");
 			print ("<TH>Numero de Alumnos</TH>\n");
+            print ("<TH>Ver Detalles</TH>\n");
+			print ("<TH>Actualizar</TH>\n");
+         	print ("<TH>Borrar</TH>\n");
          	print ("</TR>\n");
 
         	for ($i=0; $i<$nfilas; $i++)
@@ -134,6 +138,10 @@ else
             	print ("<TD>" . $resultado['deporte'] . "</TD>\n");
             	print ("<TD>" . $resultado['duracion_cursos'] . " horas</TD>\n");
 				print ("<TD> $diafa </TD>\n");
+                print ("<TD><a href='verdetallescurso.php?id=" . $resultado['id_curso'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+				print ("<TD><a href='actualizarcurso.php?id=" . $resultado['id_curso'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
+           		print ("<TD><a href='borrarcurso.php?id=" . $resultado['id_curso'] . "'><center><img src='../img/iconoborrar.jpg' border='0'></img></center></a></TD>\n");
+            	print ("</TR>\n");
 				print ("</TR>\n");
         	}
 
