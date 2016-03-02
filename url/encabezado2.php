@@ -111,6 +111,7 @@ include('databaseConnection.php'); */
 							$resultado = mysql_fetch_array ($consulta);
 							if ($resultado['tipo']=="admin")
 							{
+                                $_SESSION['admin']="si";
 							?>
 								<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="nuevousuario.php">Altas de Usuarios</a></div>
 							<?php
