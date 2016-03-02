@@ -218,7 +218,7 @@ else
 							<br/>
 							Nombre Cliente *:<?php
                     echo " <select name='nombrem' required'>";
-                    $connectionz = new mysqli("localhost", "root", "", "thesurfclub");
+                    $connectionz = new mysqli($db_host, $db_user, $db_password, $db_name);
 if ($result3=$connectionz->query("SELECT * FROM clientes;")) {
      if ($result3->num_rows===0) {
                 echo "ERROR FATAL, ABORTAR MISIÓN";
