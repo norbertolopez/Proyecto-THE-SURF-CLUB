@@ -12,7 +12,7 @@ if (!isset($_SESSION['usuario']))
 else
 {
 				$error="";
-//
+///
 				$err=false;
 				
 				// Subir fichero
