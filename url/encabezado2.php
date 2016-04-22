@@ -117,12 +117,7 @@ include('databaseConnection.php'); */
 							<?php
 							}
 							else
-							{
-							?>
-							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="perfil.php">Editar Perfil</a></div>
-							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="eliminarusuario.php">Borrar Perfil</a></div>
-							<?PHP
-								}
+						
 							?>
 							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="cerrarsesion.php">Salir</a></div>
 					<?php

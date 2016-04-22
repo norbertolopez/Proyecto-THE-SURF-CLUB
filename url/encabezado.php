@@ -102,6 +102,8 @@ include_once("db_configuration.php");
 							$consulta = mysql_query ($instruccion, $conexion)
 								or die ("Fallo en la consulta");
 							$resultado = mysql_fetch_array ($consulta);
+                        
+                        //si se cumple la condicion tipo sera admin , y si dolar session es admin (verdadero) nos //mostrara el apartado alta de usuarios
 							if ($resultado['tipo']=="admin")
 							{
                                 $_SESSION['admin']="si";

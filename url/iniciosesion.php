@@ -1,6 +1,8 @@
 <?php
+// variables dolar SESSION que se encuentran distintas paginas
 
-session_start();
+// session_start permite llevar/utilizar la variable session entre pagina y pagina
+session_start(); 
 include("encabezado.php");
 
 include_once("db_configuration.php");
@@ -9,7 +11,11 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 
 		
 				$error=FALSE;
-			
+
+// $session: donde se almacena la sesion del usuario
+
+			//Si + condicion,, isset:Comprueba Que la variable este definida o no (contiene las credenciales del login) y ocurre en todo lo que esta en la siguiente llave si se cumple el if
+
 				if (isset ($_REQUEST['usuariol']) && isset ($_REQUEST['contrasenal']))
 				{
 					// Conectar con el servidor de base de datos.

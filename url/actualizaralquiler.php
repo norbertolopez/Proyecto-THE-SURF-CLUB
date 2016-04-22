@@ -12,7 +12,7 @@ if (!isset($_SESSION['usuario']))
 else
 {
 				$error="";
-
+// $err ponemos estado falso , pero en el momento que tengamos un error lo pasamos a verdadero ( si ponemos nombre //vacio se traducira en verdadero)
 				$err=false;
 				
 				// Subir fichero
@@ -42,6 +42,9 @@ else
       			if (isset($_REQUEST['enviarl']))
    				{
      				//Comprobación de Errores.
+                    //trim:Elimina espacio en blanco de lo que metamos en la variable o de lo que tengamos. 
+                    
+                    //$error: es el error de variable que pintariamos
    					if (trim($_REQUEST['nombrel'])=="")
      				{
      					$error["nombrel"]="Campo marcado (*) requerido";

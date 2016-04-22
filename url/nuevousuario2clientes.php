@@ -151,6 +151,7 @@ else
    					<div class="preguntalogin">Haz clik <a href="clientes.php">aquí</a> para volver a la agenda</div>
       				<?php
    				}
+    //si no esta definida , muestra el formulario para rellenarlo
    				else
    				{
 			?>
@@ -195,6 +196,7 @@ if ($result3=$connectionz->query("SELECT * FROM cursos;")) {
      if ($result3->num_rows===0) {
                 echo "ERROR FATAL, ABORTAR MISIÓN";
               } else {
+         //mientras tenga .. muestra ...
          while($obj2 = $result3->fetch_object()) {
                     echo "<option value='".$obj2->id_curso."'>".$obj2->nombre_curso."</option>";
                  }
