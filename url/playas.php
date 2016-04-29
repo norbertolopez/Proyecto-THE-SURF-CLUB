@@ -40,18 +40,7 @@ else
 			mysql_select_db ($db_name)
 				or die ("No se puede seleccionar la base de datos");
 				
-			//Si no se ha pulsado buscar.
-		//	$instruccion = "select * from playas LIMIT $comienzo,$num" ;
-		//	$instruccion2 = "select * from playas";
-	
-										
-	//	$consulta = mysql_query ($instruccion, $conexion)
-	//		 or die ("Fallo en la consulta1");
-	//	$consulta2 = mysql_query ($instruccion2, $conexion)
-	//		 or die ("Fallo en la consulta2");
-
-	//	$nfilas = mysql_num_rows ($consulta);
-	//	$nfilas_t= mysql_num_rows ($consulta2);
+		
 ?>
 		<center>
 <?php 
