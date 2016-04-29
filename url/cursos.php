@@ -50,39 +50,7 @@ else
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
-		//Para la paginación vamos a realizar dos consultas, una para ver el total y otra para limitarlas.
-								
-		//Comprobamos si se le ha dado a buscar
-	//	if (isset($buscar) && $error=="")
-	//	{
-			//Si se le ha dado a buscar y en la busqueda a introducido una actividad.
-	//		if($fecha_curso != "")
-	//		{
-				
-	//			$instruccion = "SELECT * FROM cursos WHERE  fecha_inicio_cursos <= '$fecha_curso2' AND fecha_fin_curso >= '$fecha_curso2' LIMIT $comienzo,$num";
-	//			$instruccion2 = "SELECT * FROM cursos WHERE  fecha_inicio_cursos <= '$fecha_curso2' AND fecha_fin_curso >= '$fecha_curso2'";
-	//		}
-	//		else
-	//		{
-	//		$instruccion = "select * from cursos LIMIT $comienzo,$num" ;
-	//		$instruccion2 = "select * from cursos";
-	//		}
-	//	}
-	//	else
-	//	{		
-			//Si no se ha pulsado buscar.
-	//		$instruccion = "select * from cursos LIMIT $comienzo,$num" ;
-	//		$instruccion2 = "select * from cursos";
-		}
-	//											
-	//	$consulta = mysql_query ($instruccion, $conexion)
-	//		 or die ("Fallo en la consulta1");
-	//	$consulta2 = mysql_query ($instruccion2, $conexion)
-	//		 or die ("Fallo en la consulta2");
 
-	//	$nfilas = mysql_num_rows ($consulta);
-	//	$nfilas_t= mysql_num_rows ($consulta2);
-// ?>
 		<center>
 <?php 
 			//Vamos a "pintar los botones".
