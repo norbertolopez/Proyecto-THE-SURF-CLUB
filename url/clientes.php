@@ -41,7 +41,55 @@ else
 		if(!isset($comienzo)) 
 			$comienzo=0;
 									
-		
+		//Para la paginación vamos a realizar dos consultas, una para ver el total y otra para limitarlas.
+								
+		//Comprobamos si se le ha dado a buscar
+		if (isset($buscar))
+		{
+			//Si se le ha dado a buscar y en la busqueda a introducido una actividad.
+			if($usuario3=="" && $actividad!="")
+			{
+				$instruccion = "select * from clientes where apellidos_cliente='$actividad' LIMIT $comienzo,$num" ;
+				$instruccion2 = "select * from clientes where apellidos_cliente='$actividad'";
+			}
+									
+			//Si se le ha dado a buscar y en la busqueda a introducido un usuario.
+			if($usuario3!="" && $actividad=="")
+			{
+				$instruccion = "select * from clientes where nombre_cliente='$usuario3' LIMIT $comienzo,$num" ;
+				$instruccion2 = "select * from clientes where nombre_cliente='$usuario3'";
+			}
+									
+			//Si se le ha dado a buscar y en la busqueda a introducido un usuario y teléfono.
+			if($usuario3!="" && $actividad!="")
+			{
+				$instruccion = "select * from clientes where nombre_cliente='$usuario3' and apellidos_cliente='$actividad' LIMIT $comienzo,$num" ;
+				$instruccion2 = "select * from clientes where nombre_cliente='$usuario3' and apellidos_cliente='$actividad'";
+			}
+									
+			//Si no se ha introduccido nada y se ha pulsado buscar.
+			if($usuario3=="" && $actividad=="")
+			{
+				$instruccion = "select * from clientes LIMIT $comienzo,$num" ;
+				$instruccion2 = "select * from clientes";
+			}
+									
+		}
+		else
+		{		
+			//Si no se ha pulsado buscar.
+			$instruccion = "select * from clientes LIMIT $comienzo,$num" ;
+			$instruccion2 = "select * from clientes";
+		}
+												
+		$consulta = mysql_query ($instruccion, $conexion)
+			 or die ("Fallo en la consulta1");
+		$consulta2 = mysql_query ($instruccion2, $conexion)
+			 or die ("Fallo en la consulta2");
+
+		$nfilas = mysql_num_rows ($consulta);
+		$nfilas_t= mysql_num_rows ($consulta2);
+?>
 		<center>
 <?php 
 			//Vamos a "pintar los botones".

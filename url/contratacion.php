@@ -19,7 +19,7 @@ else
 ?>
 	<div class="titulomenu">Contratación > </div><div class="imagentitulo"></div> 
 	<div class="cuerpomenu">
-		<form action="nuevousuario2contratacion.php" METHOD="POST">Listado de Contratación de The Surf Clubaa <span style="text-align:right;"><input type="submit" value="Añadir Contrato"></span></form>
+		<form action="nuevousuario2contratacion.php" METHOD="POST">Listado de Contratación de The Surf Club <span style="text-align:right;"><input type="submit" value="Añadir Contrato"></span></form>
 		
 							
 <?php 
@@ -42,42 +42,42 @@ else
 			$comienzo=0;
 									
 		//Para la paginación vamos a realizar dos consultas, una para ver el total y otra para limitarlas.
-	//							
+								
 		//Comprobamos si se le ha dado a buscar
-	//	if (isset($buscar) && $error=="")
-	//	{
-	//								
-			//Si se le ha dado a buscar y en la busqueda a introducido un usuario.
-	//		if($usuario3!="")
-	//		{
-	//			$instruccion = "select * from contrato where fecha_fin_contrato >'$usuario4' LIMIT $comienzo,$num" ;
-	//			$instruccion2 = "select * from contrato where fecha_fin_contrato >'$usuario4'";
-	//		}
-	//								
-	//								
-			//Si no se ha introduccido nada y se ha pulsado buscar.
-	//		if($usuario3=="")
-	//		{
-	//			$instruccion = "select * from contrato LIMIT $comienzo,$num" ;
-	//			$instruccion2 = "select * from contrato";
-	//		}
+		if (isset($buscar) && $error=="")
+		{
 									
-	//	}
-	//	else
-	//	{		
+			//Si se le ha dado a buscar y en la busqueda a introducido un usuario.
+			if($usuario3!="")
+			{
+				$instruccion = "select * from contrato where fecha_fin_contrato >'$usuario4' LIMIT $comienzo,$num" ;
+				$instruccion2 = "select * from contrato where fecha_fin_contrato >'$usuario4'";
+			}
+									
+									
+			//Si no se ha introduccido nada y se ha pulsado buscar.
+			if($usuario3=="")
+			{
+				$instruccion = "select * from contrato LIMIT $comienzo,$num" ;
+				$instruccion2 = "select * from contrato";
+			}
+									
+		}
+		else
+		{		
 			//Si no se ha pulsado buscar.
-	//		$instruccion = "select * from contrato LIMIT $comienzo,$num" ;
-	//		$instruccion2 = "select * from contrato";
-	//	}
+			$instruccion = "select * from contrato LIMIT $comienzo,$num" ;
+			$instruccion2 = "select * from contrato";
+		}
 												
-	//	$consulta = mysql_query ($instruccion, $conexion)
-	//		 or die ("Fallo en la consulta1");
-	//	$consulta2 = mysql_query ($instruccion2, $conexion)
-	//		 or die ("Fallo en la consulta2");
+		$consulta = mysql_query ($instruccion, $conexion)
+			 or die ("Fallo en la consulta1");
+		$consulta2 = mysql_query ($instruccion2, $conexion)
+			 or die ("Fallo en la consulta2");
 
-	//	$nfilas = mysql_num_rows ($consulta);
-	//	$nfilas_t= mysql_num_rows ($consulta2);
- // ?>
+		$nfilas = mysql_num_rows ($consulta);
+		$nfilas_t= mysql_num_rows ($consulta2);
+?>
 		<center>
 <?php 
 			//Vamos a "pintar los botones".
