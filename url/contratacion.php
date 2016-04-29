@@ -19,7 +19,7 @@ else
 ?>
 	<div class="titulomenu">Contratación > </div><div class="imagentitulo"></div> 
 	<div class="cuerpomenu">
-		<form action="nuevousuario2contratacion.php" METHOD="POST">Listado de Contratación de The Surf Club <span style="text-align:right;"><input type="submit" value="Añadir Contrato"></span></form>
+		<form action="nuevousuario2contratacion.php" METHOD="POST">Listado de Contratación de The Surf Club !! <span style="text-align:right;"><input type="submit" value="Añadir Contrato"></span></form>
 		
 							
 <?php 
