@@ -12,7 +12,7 @@ if (!isset($_SESSION['usuario']))
 }
 else
 {
-	include("../lib/fecha.php");
+//	include("../lib/fecha.php"); //
 	$usuario=$_SESSION['usuario'];
 	
 	
