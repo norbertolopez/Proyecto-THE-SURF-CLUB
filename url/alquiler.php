@@ -32,7 +32,7 @@ else
 			or die ("No se puede seleccionar la base de datos");
 									
 		$usuario2=$_SESSION['usuario'];
-		/* $imgagen2=$nombreFichero; */
+		
 								
 		//Empezamos la paginación.
 		$num=4;
