@@ -6,7 +6,7 @@ include_once("db_configuration.php");
 <html LANG="es">
 	<head>
 		<title>The Surf Club</title>
-		<LINK REL="stylesheet" TYPE="text/css" HREF="../css/estilos.css">
+		<LINK REL="stylesheet" TYPE="text/css" HREF="../css/estilos.css" charset="UTF-8">
 	</head>
 	<body>
 		<center>
