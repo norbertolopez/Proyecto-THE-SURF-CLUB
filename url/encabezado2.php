@@ -8,6 +8,7 @@ include('databaseConnection.php'); */
 	<head>
 		<title>The Surf Club</title>
 		<LINK REL="stylesheet" TYPE="text/css" HREF="../css/estilos.css">
+            <meta charset="utf-8" >
 	</head>
 	<body>
 		<center>
