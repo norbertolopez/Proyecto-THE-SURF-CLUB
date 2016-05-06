@@ -58,7 +58,7 @@ include("encabezado.php");
 							if (!isset($_SESSION['usuario']))
 							{
 							 ?>
-								<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="url/iniciosesion.php">Inicio de Sesión</a></div>
+								<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="url/iniciosesion.php">Inicio de Sesion</a></div>
 							<?php
 							 }
 							?>

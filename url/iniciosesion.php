@@ -56,7 +56,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
                             <b></b>
                             <p></p>
                             <img src="../img/entrar12.gif" height="150px" width="150px"></img>
-							<?php echo "<META HTTP-EQUIV='refresh' CONTENT='3; URL=bienvenido.php'>";?>
+							<?php echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=bienvenido.php'>";?>
 						</div>
         		<?php
         		} 	   				      					
