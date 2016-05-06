@@ -25,7 +25,7 @@ else
 		//Con esta instrucción cerramos sesión(destruimos).
 		session_destroy ();	
 		//Con este meta, redirecionamos a la pagina index.php
-		echo "<META HTTP-EQUIV='refresh' CONTENT='5; URL=../index.php'>";
+		echo "<META HTTP-EQUIV='refresh' CONTENT='0; URL=../index.php'>";
 ?>
 	</div>				
 <?PHP
