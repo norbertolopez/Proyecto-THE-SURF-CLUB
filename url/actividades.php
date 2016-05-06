@@ -2,6 +2,7 @@
 
 session_start();
 include("encabezado2.php");
+include("encabezado.php");
 print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
 ?>
 						<div class="titulomenu">Actividades > </div><div class="imagentitulo"></div> 
