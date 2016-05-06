@@ -5,12 +5,13 @@ session_start();
 <?php
 
 include_once("./db_configuration.php");
+include("encabezado.php");
 
 ?>
 <html>
 	<head>
 		<title>THE SURF CLUB</title>
-		<LINK REL="stylesheet" TYPE="text/css" HREF="css/estilos.css">
+		<LINK REL="stylesheet" TYPE="text/css" HREF="css/estilos.css" >
 	</head>
 	<body>
 		<center>
