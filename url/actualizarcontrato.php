@@ -154,7 +154,7 @@ else
 								?>
 							<br/>
                             <br/>
-                            Fecha Inicio *:<input type="date"  name="iniciol" value=""></input>
+                            Fecha Inicio *:<input type="date"  name="iniciol"></input>
                 
 								<?php
                      if (isset($error['iniciol'])) {
@@ -164,7 +164,7 @@ else
 								?>
 							<br/>
                             <br/>
-                             Fecha Fin *:<input type="date"  name="finl" value=""></input>
+                             Fecha Fin *:<input type="date"  name="finl"></input>
                 
 								<?php
                      if (isset($error['finl'])) {
