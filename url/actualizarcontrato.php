@@ -164,7 +164,16 @@ else
 								?>
 							<br/>
                             <br/>
-                             Fecha Fin *:<input type="date"  name="finl"></input>
+                            <?php
+                            
+                        $result4=$conexion->query("select * from contrato where id_contrato=$id");
+                    while($obj4=$result4->fetch_object()){
+                        $obj4->fecha_fin_contrato=$valuaso;
+                        echo "Fecha Fin *:<input type='date' value='$valuaso'  name='finl'></input>";
+                    }
+                       
+                    ?>
+                             
                 
 								<?php
                      if (isset($error['finl'])) {
