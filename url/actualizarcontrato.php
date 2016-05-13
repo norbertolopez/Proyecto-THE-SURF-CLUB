@@ -156,7 +156,11 @@ else
                             <br/>
                             <?php
                             $connection = mysql_connect ($db_host, $db_user, $db_password);
-                    
+                            					 or die ("No se puede conectar con el servidor");
+
+   						// Seleccionar base de datos
+     					mysql_select_db ($db_name)
+         					or die ("No se puede seleccionar la base de datos");
                         $result5=$connection->query("select * from contrato where id_contrato='$id';");
                     while($obj5=$result5->fetch_object()){
                         $valuaso2=$obj5->fecha_inicio_contrato;
@@ -176,7 +180,11 @@ else
                             <br/>
                             <?php
                             $connection = mysql_connect ($db_host, $db_user, $db_password);
-                    
+                            					 or die ("No se puede conectar con el servidor");
+
+   						// Seleccionar base de datos
+     					mysql_select_db ($db_name)
+         					or die ("No se puede seleccionar la base de datos");
                         $result4=$connection->query("select * from contrato where id_contrato='$id';");
                     while($obj4=$result4->fetch_object()){
                         $valuaso=$obj4->fecha_fin_contrato;
