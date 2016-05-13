@@ -155,7 +155,7 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = mysql_connect ($db_host, $db_user, $db_password);
+                            $connection = mysql_connect ($db_host, $db_user, $db_password)
                             					 or die ("No se puede conectar con el servidor");
 
    						// Seleccionar base de datos
@@ -179,7 +179,7 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = mysql_connect ($db_host, $db_user, $db_password);
+                            $connection = mysql_connect ($db_host, $db_user, $db_password)
                             					 or die ("No se puede conectar con el servidor");
 
    						// Seleccionar base de datos
