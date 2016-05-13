@@ -155,7 +155,7 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = new mysqli ($db_host, $db_user, $db_password);
+                            $connection = mysql_connect ($db_host, $db_user, $db_password);
                     
                         $result5=$connection->query("select * from contrato where id_contrato='$id';");
                     while($obj5=$result5->fetch_object()){
@@ -175,7 +175,7 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = new mysqli ($db_host, $db_user, $db_password);
+                            $connection = mysql_connect ($db_host, $db_user, $db_password);
                     
                         $result4=$connection->query("select * from contrato where id_contrato='$id';");
                     while($obj4=$result4->fetch_object()){
