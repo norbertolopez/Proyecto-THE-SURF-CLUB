@@ -157,7 +157,16 @@ else
 								?>
 							<br/>
                             <br/>
-                            Fecha Inicio del alquiler *:<input type="date"  name="iniciol"></input>
+                            <?php
+                            $connection = new mysqli ("localhost","root","","thesurfclub");
+                    
+                        $result4=$connection->query("select * from alquiler where id_alquiler='$id';");
+                    while($obj4=$result4->fetch_object()){
+                        $valuaso=$obj4->fecha_inicio_alquiler;
+                        echo "Fecha Inicio del alquiler *:<input type='date' value='$valuaso'  name='finl'></input>";
+                    }
+                       
+?>
                 
 								<?php
                      if (isset($error['iniciol'])) {
@@ -167,7 +176,16 @@ else
 								?>
 							<br/>
                             <br/>
-                             Fecha Fin del alquiler *:<input type="date"  name="finl"></input>
+                             <?php
+                            $connection = new mysqli ("localhost","root","","thesurfclub");
+                    
+                        $result5=$connection->query("select * from alquiler where id_alquiler='$id';");
+                    while($obj5=$result5->fetch_object()){
+                        $valuaso2=$obj5->fecha_fin_alquiler;
+                        echo "Fecha Fin del alquiler *:<input type='date' value='$valuaso2'  name='finl'></input>";
+                    }
+                       
+?>
                 
 								<?php
                      if (isset($error['finl'])) {

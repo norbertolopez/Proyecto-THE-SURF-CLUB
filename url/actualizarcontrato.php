@@ -154,7 +154,17 @@ else
 								?>
 							<br/>
                             <br/>
-                            Fecha Inicio *:<input type="date"  name="iniciol"></input>
+                            <?php
+                            $connection = new mysqli ("localhost","root","","thesurfclub");
+                    
+                        $result5=$connection->query("select * from contrato where id_contrato='$id';");
+                    while($obj5=$result5->fetch_object()){
+                        $valuaso2=$obj5->fecha_inicio_contrato;
+                        echo "Fecha Inicio *:<input type='date' value='$valuaso2'  name='finl'></input>";
+                    }
+                       
+?>
+                           
                 
 								<?php
                      if (isset($error['iniciol'])) {
@@ -165,13 +175,13 @@ else
 							<br/>
                             <br/>
                             <?php
-                            
-                        $result4=$conexion->query("select * from contrato where id_contrato=$id");
+                            $connection = new mysqli ("localhost","root","","thesurfclub");
+                    
+                        $result4=$connection->query("select * from contrato where id_contrato='$id';");
                     while($obj4=$result4->fetch_object()){
-                        $obj4->fecha_fin_contrato=$valuaso;
+                        $valuaso=$obj4->fecha_fin_contrato;
                         echo "Fecha Fin *:<input type='date' value='$valuaso'  name='finl'></input>";
                     }
-                       
                     ?>
                              
                 
