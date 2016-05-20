@@ -155,16 +155,18 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = mysql_connect ($db_host, $db_user, $db_password ,$db_name)
-                            					 or die ("No se puede conectar con el servidor");
+                            $connection = new mysqli ($db_host, $db_user, $db_password ,$db_name)
+                        
+                            				or die ("No se puede conectar con el servidor");
 
-   						
                         $result5=$connection->query("select * from contrato where id_contrato='$id';");
+                 
                     while($obj5=$result5->fetch_object()){
                         $valuaso2=$obj5->fecha_inicio_contrato;
-                        echo "Fecha Inicio *:<input type='date' value='$valuaso2'  name='finl'></input>";
+                        echo "Fecha Inicio *:<input type='date' value='$valuaso2'  name='iniciol'></input>";
+                        
                     }
-                       
+                      
 ?>
                            
                 
@@ -177,10 +179,10 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = mysql_connect ($db_host, $db_user, $db_password, $db_name)
+                            $connection = new mysqli ($db_host, $db_user, $db_password ,$db_name)
+                                
                             					 or die ("No se puede conectar con el servidor");
 
-   						
                         $result4=$connection->query("select * from contrato where id_contrato='$id';");
                     while($obj4=$result4->fetch_object()){
                         $valuaso=$obj4->fecha_fin_contrato;

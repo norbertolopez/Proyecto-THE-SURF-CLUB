@@ -158,14 +158,18 @@ else
 							<br/>
                             <br/>
                             <?php
-                            $connection = mysql_connect ($db_host, $db_user, $db_password);
-                    
+                            $connection = new mysqli ($db_host, $db_user, $db_password ,$db_name)
+                        
+                            				or die ("No se puede conectar con el servidor");
+
                         $result4=$connection->query("select * from alquiler where id_alquiler='$id';");
+                 
                     while($obj4=$result4->fetch_object()){
                         $valuaso=$obj4->fecha_inicio_alquiler;
-                        echo "Fecha Inicio del alquiler *:<input type='date' value='$valuaso'  name='finl'></input>";
+                        echo "Fecha Inicio *:<input type='date' value='$valuaso'  name='iniciol'></input>";
+                        
                     }
-                       
+                      
 ?>
                 
 								<?php
@@ -176,15 +180,19 @@ else
 								?>
 							<br/>
                             <br/>
-                             <?php
-                            $connection = mysql_connect ($db_host, $db_user, $db_password);
-                    
+<?php
+                            $connection = new mysqli ($db_host, $db_user, $db_password ,$db_name)
+                        
+                            				or die ("No se puede conectar con el servidor");
+
                         $result5=$connection->query("select * from alquiler where id_alquiler='$id';");
+                 
                     while($obj5=$result5->fetch_object()){
                         $valuaso2=$obj5->fecha_fin_alquiler;
-                        echo "Fecha Fin del alquiler *:<input type='date' value='$valuaso2'  name='finl'></input>";
+                        echo "Fecha Inicio *:<input type='date' value='$valuaso2'  name='finl'></input>";
+                        
                     }
-                       
+                      
 ?>
                 
 								<?php
