@@ -25,7 +25,7 @@ print "<LINK REL='stylesheet' TYPE='text/css' HREF='../css/estilos.css'>";
                         echo "<td>".$obj5->nombre_curso."</td>";
                         echo "<td>".$obj5->deporte."</td>";
                         $cursaso=$obj5->id_curso;
-                        echo "<td>"."<a href='anadircliente.php?idd=$cursaso&idcli=".$_GET['id']."'>"."<img src='../img/añadircli.png' width='30'></img></a>"."</td>";
+                        echo "<td>"."<a href='anadircliente.php?idd=$cursaso&idcli=".$_GET['id']."'>"."<img src='../img/anadircli.png' width='30'></img></a>"."</td>";
                         echo "</tr>";
                         
                         

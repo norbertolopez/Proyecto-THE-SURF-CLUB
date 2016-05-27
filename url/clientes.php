@@ -139,7 +139,7 @@ else
                 print ("<TD><a href='verdetallescliente.php?id=" . $resultado['id_cliente'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
 				print ("<TD><a href='actualizarcliente.php?id=" . $resultado['id_cliente'] . "'><center><img src='../img/iconodetalles.jpg' border='0'></img></center></a></TD>\n");
            		print ("<TD><a href='borrarcliente.php?id=" . $resultado['id_cliente'] . "'><center><img src='../img/iconoborrar.jpg' border='0'></img></center></a></TD>\n");
-                print ("<TD><a href='anadircliente.php?id=" . $resultado['id_cliente'] . "'><center><img src='../img/añadircli.png' height='22px' width='22px' border='0'></img></center></a></TD>\n");
+                print ("<TD><a href='anadircliente.php?id=" . $resultado['id_cliente'] . "'><center><img src='../img/anadircli.png' height='22px' width='22px' border='0'></img></center></a></TD>\n");
             	print ("</TR>\n");
             	print ("</TR>\n");
         	}
