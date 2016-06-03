@@ -166,7 +166,7 @@ else
 							<br/>
 							<br/>
 
-								Fecha Inicio *:<input type="text"  name="telefonol"></input>
+								Fecha Inicio *:<input type="date"  name="telefonol"></input>
 								<?php
                     if (isset($error['telefonol'])) {
                     if ($error['telefonol']!="")
@@ -175,7 +175,7 @@ else
 								?>
 							<br/>
 							<br/>
-								Fecha Fin *:<input type="text"  name="emaill"></input>
+								Fecha Fin *:<input type="date"  name="emaill"></input>
 								<?php
                     if (isset($error['emaill'])) {
                     if ($error['emaill']!="")
