@@ -1,6 +1,7 @@
 <?php
 
 include_once('class.pdf.php');
+include_once("db_configuration.php");
 
 class Cezpdf extends Cpdf {
 //==============================================================================
