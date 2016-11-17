@@ -128,6 +128,7 @@ include("encabezado.php");
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.ripcurl.com"><img src="img/tuenti.jpg" width="33"></img>&nbsp Rip Curl</a></div>
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.billabong.com"><img src="img/twitter.jpg" width="33"></img>&nbsp Billabong</a></div>
 							<div class="botonmenu"><img src="img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.quiksilver.com"><img src="img/facebook.jpg" width="33"></img>&nbsp Quiksilver</a></div>
+<?php include("./url/cambiar_color_tema.php"); ?>
 					<div class="clearl">
 					</div>
 				</div>
