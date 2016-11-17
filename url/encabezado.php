@@ -85,7 +85,7 @@ include_once("db_configuration.php");
 							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="contratacion.php">Contratación</a></div>
 							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="material.php">Material</a></div>
 							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="alquiler.php">Alquiler</a></div>
-							
+							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="estadisticas.php">Estadisticas</a></div>
 							<?php
 							// Conectar con el servidor de base de datos.
 							$conexion = mysql_connect ($db_host, $db_user, $db_password)
