@@ -129,6 +129,7 @@ include_once("db_configuration.php");
 							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.billabong.com"><img src="../img/twitter.jpg" width="33"></img>&nbsp Billabong Camp</a></div>
 							<div class="botonmenu"><img src="../img/botonmenu.jpg" height="20px" width="20px" border="0"></img></div><div class="listamenu"><a href="http://www.quiksilver.com"><img src="../img/facebook.jpg" width="33"></img>&nbsp Quiksilver Point</a></div>
 <?php include("cambiar_color_tema.php"); ?>
+<?php include("./cambiar_color_tema.php"); ?>
 					<div class="clearl">
 					</div>
 				</div>
