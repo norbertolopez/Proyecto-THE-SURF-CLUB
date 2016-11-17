@@ -8,10 +8,10 @@ include_once("./db_configuration.php");
 
 <?php
 echo "<h4>*Elige un tema:</br></h4>";
-echo "<a href='index.php?tema=tema1'><img style='margin: 5px 5px 5px 5px' width='50px' height='30px' src='img/tema1.png'/></a>";
-echo "<a href='index.php?tema=tema2'><img style='margin: 5px 5px 5px 5px' width='50px' height='30px' src='img/tema2.png'/></a>";
-echo "<a href='index.php?tema=tema3'><img style='margin: 5px 5px 5px 5px' width='50px' height='30px' src='img/tema3.png'/></a></br>";
-echo "<a href='index.php?tema=tema0'>(Por defecto)</a>";
+echo "<a href='../index.php?tema=tema1'><img style='margin: 5px 5px 5px 5px' width='50px' height='30px' src='../img/tema1.png'/></a>";
+echo "<a href='../index.php?tema=tema2'><img style='margin: 5px 5px 5px 5px' width='50px' height='30px' src='../img/tema2.png'/></a>";
+echo "<a href='../index.php?tema=tema3'><img style='margin: 5px 5px 5px 5px' width='50px' height='30px' src='../img/tema3.png'/></a></br>";
+echo "<a href='../index.php?tema=tema0'>(Por defecto)</a>";
 if (isset($_GET['tema'])){
 	$_SESSION['tema']=$_GET['tema'];
 }
