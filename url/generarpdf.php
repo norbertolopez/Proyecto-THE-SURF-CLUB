@@ -123,7 +123,7 @@ if ($pag=="cursos")
 		  $pdf->ezText("<b>Lista de Número de Cursos impartidos por Cada monitor</b>\n",16);
 }
 
-if ($pag=="pistas")
+if ($pag=="playas")
 {
 // Conectar con el servidor de base de datos.
 		$conexion = mysql_connect ($db_host, $db_user, $db_password)
