@@ -142,6 +142,12 @@ else
         	}
 
          		print ("</TABLE></center>\n");
+				$_SESSION['consulta1']=$instruccion;
+				//$_SESSION['consulta2']=$usuario;
+				$_SESSION['pag']="contrato";
+				?>
+				<div class="preguntalogin2"><a  href="generarpdf.php" TARGET="_blank"><img src="../img/icono_pdf.jpg" width="50" border="0"></img></a></div>
+				<?PHP
 				
 				
 		}
