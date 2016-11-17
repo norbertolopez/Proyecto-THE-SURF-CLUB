@@ -139,7 +139,7 @@ if ($pag=="playas")
 	for ($i=0; $i<$nfilas; $i++)
          	{
 				$resultado = mysql_fetch_array ($consulta);
-            	$idal=$resultado['id_pista'];
+            	$idal=$resultado['id_playa'];
 				$instruccionp = "SELECT count(id_curso) from cursos where id_playa='$idal'";
 				$consultap = mysql_query ($instruccionp, $conexion)
 					or die ("Fallo en la consulta1as");
@@ -151,7 +151,7 @@ if ($pag=="playas")
 		mysql_close ($conexion);
 		   
 	 
-		  $pdf->ezText("<b>Lista de Pistas</b>\n",16);
+		  $pdf->ezText("<b>Lista de Playas</b>\n",16);
 }
 
 if ($pag=="clientes")
