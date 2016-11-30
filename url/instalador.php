@@ -116,7 +116,7 @@
 					  if (substr(trim($line), -1, 1) == ';'){
 							  // Perform the query
 							  $connection->query($templine) or print('Error performing query \'<strong>' . $templine . '\': ' . mysql_error() . '<br /><br />');
-							  // Reset temp variable to empty
+							  // Reset temp variable to empty1
 							  $templine = '';
 						  }
                   }
