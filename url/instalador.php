@@ -130,9 +130,9 @@
 					fwrite($file, "$"."db_name="."'".$newbd."';"."\n");
 					fwrite($file, "?>"."\n");
 				fclose($file);
-				$file2 = fopen("index.php", "w");
+				$file2 = fopen("../index.php", "w");
 					fwrite($file2, "<?php"."\n");
-					fwrite($file2, "header('Location: ../../index.php');"."\n");
+					fwrite($file2, "header('Location: ../../../index.php');"."\n");
 					fwrite($file2, "?>"."\n");
 				fclose($file2);
 				$fichero = 'favicon.ico';
@@ -147,7 +147,7 @@
 				unlink($filename);
 				unlink("favicon.ico");
 				unlink("server_information.php");
-                header('Location: index.php');
+                header('Location: ../index.php');
               }
 			}
           
