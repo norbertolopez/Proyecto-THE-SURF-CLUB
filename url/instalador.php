@@ -132,7 +132,7 @@
 				fclose($file);
 				$file2 = fopen("../../index.php", "w");
 					fwrite($file2, "<?php"."\n");
-					fwrite($file2, "header('Location: /Proyecto-THE-SURF-CLUB/url/index.php');"."\n");
+					fwrite($file2, "header('Location: /Proyecto-THE-SURF-CLUB/index.php');"."\n");
 					fwrite($file2, "?>"."\n");
 				fclose($file2);
 				$fichero = 'favicon.ico';
