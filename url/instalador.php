@@ -130,7 +130,7 @@
 					fwrite($file, "$"."db_name="."'".$newbd."';"."\n");
 					fwrite($file, "?>"."\n");
 				fclose($file);
-				$file2 = fopen("../../../index.php", "w");
+				$file2 = fopen("../../index.php", "w");
 					fwrite($file2, "<?php"."\n");
 					fwrite($file2, "header('Location: /Proyecto-THE-SURF-CLUB/url/index.php');"."\n");
 					fwrite($file2, "?>"."\n");
@@ -147,7 +147,7 @@
 				unlink($filename);
 				unlink("favicon.ico");
 				unlink("server_information.php");
-                header('Location: ../../../index.php');
+                header('Location: ../../index.php');
               }
 			}
           
