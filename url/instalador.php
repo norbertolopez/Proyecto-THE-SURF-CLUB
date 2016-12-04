@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Instalación Film Review</title>
+    <title>Instalación THE SURF CLUB</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   </head>
-  <body style="background-color:darkred; ">
+  <body style="background-color:blue; ">
 
 	<div style="width:1000px;margin: 0 auto;margin-top:1%;">
 		<div class='form-group col-lg-10'>
