@@ -53,7 +53,7 @@ else
 	mysql_close ($conexion);
 	
 ?>
-						<div class="titulomenu">Estadísticas > </div><div class="imagentitulo"></div> 
+						<div class="titulomenu">Estadisticas > </div><div class="imagentitulo"></div> 
 						<div class="cuerpomenu">
 							Estadisticas
 							<div class="esta1">
