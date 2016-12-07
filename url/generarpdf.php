@@ -172,6 +172,11 @@ if ($pag=="clientes")
 		{
 			$resultado = mysql_fetch_array ($consulta);
 			$resulta2=$resultado['id_cliente'];
+			$instruccionp = "SELECT count(id_cliente) from clientes";
+				$consultap = mysql_query ($instruccionp, $conexion)
+					or die ("Fallo en la consulta1as");
+				$resultadop = mysql_fetch_array ($consultap);
+            	$diafa=$resultadop['count(id_cliente)'];
 				$data[] = array('nombre'=>$resultado['nombre_cliente'], 'num'=>$resultado['apellidos_cliente']);
 		}
 		$titles = array('nombre'=>'<b>Nombre Cliente</b>', 'num'=>'<b>Apellido de Clientes</b>');
