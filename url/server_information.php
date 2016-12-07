@@ -1,5 +1,5 @@
 <?php
-//prue
+//pru
 echo "<h6 style='padding:1% 1% 1% 1%;color:black;background-color:white;border-radius:10px;'>";
 $hname=$_SERVER['SERVER_NAME'];
 $soft=$_SERVER['SERVER_SOFTWARE'];

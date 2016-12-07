@@ -12,7 +12,7 @@
 
 	<div style="width:1000px;margin: 0 auto;margin-top:1%;">
 		<div class='form-group col-lg-10'>
-			<h2 style="margin-left:15px;margin-bottom:15px;color:white;text-decoration: underline;">Instalador Aplicación Web</h2>
+			<h2 style="margin-left:15px;margin-bottom:15px;color:white;text-decoration: underline;">Instalador de la Aplicación Web</h2>
 			<div class="form-group" >
 					<?php
 					include('server_information.php');
@@ -35,7 +35,7 @@
 		
 		<div class="form-group col-lg-5">
 			<div class="form-group">
-				<input type="text" name="formhost" class="form-control input-lg" placeholder="Host de la BD " required>
+				<input type="text" name="formhost" class="form-control input-lg" placeholder="IP de la BD " required>
 			</div>
 		</div>
 		
@@ -155,3 +155,4 @@
     </div>
   </body>
 </html>
+
